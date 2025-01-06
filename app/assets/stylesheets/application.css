@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.nested-dropdown {
+    position: relative;
+}
+.nested-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.nested-dropdown:hover .nested-content {
+    display: block;
+}
+
+.footer {
+  height: 50px; /* Adjust as needed */
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #dee2e6;
+  position: relative;
+  clear: both;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px; /* Adjust based on footer height */
+  box-sizing: border-box;
+  padding-bottom: 50px; /* Same as footer height */
+  padding: 20px; /* Space around the content */
+
+}
+
+.bi-arrow-right-short {
+    font-size: 16px; /* Adjust size */
+    margin-left: 0.5em; /* Add spacing if needed */
+    vertical-align: middle; /* Align with text */
+}
+
+
