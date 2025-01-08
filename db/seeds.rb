@@ -59,6 +59,8 @@ SchoolClass.create([
   { grade: '3ª série', level: 'Ensino Médio', quantity: 0 }
 ])
 
-   
-  
+Level.create([{ name: 'Ensino Fundamental Anos Iniciais' }, 
+              { name: 'Ensino Fundamental Anos Finais' }, 
+              { name: 'Ensino Médio' }
+])
  

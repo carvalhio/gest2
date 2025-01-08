@@ -1,32 +1,31 @@
-<%= form_with(model: teacher) do |form| %>
+<%= form_with(model: teacher, class: "needs-validation", local: true) do |form| %>
   <% if teacher.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h4>
       <ul>
-        <% teacher.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% teacher.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+  <div class="mb-3 col-md-5">
+    <%= form.label :first_name, "Nome", class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-control form-control-sm" %>
   </div>
   
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="mb-3 col-md-5">
+    <%= form.label :email, "E-mail", class: "form-label" %>
+    <%= form.text_field :email, class: "form-control form-control-sm" %>
   </div>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+  <div class="mb-3 col-md-5">
+    <%= form.label :phone, "Telefone", class: "form-label" %>
+    <%= form.text_field :phone, class: "form-control form-control-sm" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-flex justify-content-end">
+    <%= form.submit "Salvar", class: "btn btn-primary btn-sm" %>
   </div>
 <% end %>
