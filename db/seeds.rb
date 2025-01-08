@@ -39,6 +39,25 @@ Teacher.create([
 
 ])
 
+SchoolClass.create([
+  { grade: '1º A', level: 'Ensino Fundamental Anos Iniciais', quantity: 70 },
+  { grade: '1º B', level: 'Ensino Fundamental Anos Iniciais', quantity: 70 },
+  { grade: '1º C', level: 'Ensino Fundamental Anos Iniciais', quantity: 70 },
+  { grade: '2º A', level: 'Ensino Fundamental Anos Iniciais', quantity: 65 },
+  { grade: '2º B', level: 'Ensino Fundamental Anos Iniciais', quantity: 75 },
+  { grade: '2º C', level: 'Ensino Fundamental Anos Iniciais', quantity: 75 },
+  { grade: '3º A', level: 'Ensino Fundamental Anos Finais', quantity: 80 },
+  { grade: '3º B', level: 'Ensino Fundamental Anos Finais', quantity: 80 },
+  { grade: '3º C', level: 'Ensino Fundamental Anos Finais', quantity: 80 },
+  { grade: '5º A', level: 'Ensino Fundamental Anos Finais', quantity: 85 },
+  { grade: '5º B', level: 'Ensino Fundamental Anos Finais', quantity: 90 },
+  { grade: '7º ano', level: 'Ensino Fundamental Anos Finais', quantity: 78 },
+  { grade: '8º ano', level: 'Ensino Fundamental Anos Finais', quantity: 92 },
+  { grade: '9º ano', level: 'Ensino Médio', quantity: 88 },
+  { grade: '1ª série', level: 'Ensino Médio', quantity: 76 },
+  { grade: '2ª série', level: 'Ensino Médio', quantity: 82 },
+  { grade: '3ª série', level: 'Ensino Médio', quantity: 0 }
+])
 
    
   

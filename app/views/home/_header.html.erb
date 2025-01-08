@@ -9,6 +9,18 @@
         <li class="nav-item">
           <%= link_to 'Início', root_path, class:"nav-link active" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Professores", teachers_path, class:"nav-link" %>
+             </li>
+        <li class="nav-item">
+           <%= link_to "Turmas", school_classes_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cronograma</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Manual</a>
+        </li>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
             Testes
@@ -85,12 +97,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <%= link_to "Professores", teachers_path, class:"nav-link" %>
-             </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Componentes Curriculares</a>
-        </li>
+      
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="" aria-label="Search">

@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+
+<% content_for :title, "Turmas" %>
+<h6>Turmas</h6>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Ano/Série</th>
+      <th scope="col">Nível</th>
+      <th scope="col">Quantidade</th>
+      <th>Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @school_classes.each do |school_classes| %>
+      <tr>
+          <td></td>
+          <td><%= school_classes.grade %></td>
+          <td><%= school_classes.level %></td>
+          <td><%= school_classes.quantity %></td>
+          <td><%= link_to 'Detalhes', school_classes %></td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Nova turma", new_school_class_path %>
+<br>

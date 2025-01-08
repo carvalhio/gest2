@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_07_105839) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_08_162924) do
+  create_table "school_classes", force: :cascade do |t|
+    t.string "grade"
+    t.string "level"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teachers", force: :cascade do |t|
     t.string "first_name"
     t.string "email"
