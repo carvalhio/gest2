@@ -1,26 +1,45 @@
 <p style="color: green"><%= notice %></p>
 <% content_for :title, "Turmas" %>
-<%= link_to "Nova turma", new_school_class_path %>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Ano/Série</th>
-      <th scope="col">Nível</th>
-      <th scope="col">Quantidade</th>
-      <th>Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @school_classes.each do |school_classes| %>
+<%= link_to "Nova turma", new_school_class_path, class: "btn btn-primary btn-sm mb-2" %>
+<div class="mb-3">
+  <%= form_with url: school_classes_path, method: :get, local: true do %>
+    <%= label_tag :shift, "Filtrar por turno", class: "form-label" %>
+    <%= select_tag :shift, options_for_select(SchoolClass::SHIFTS, params[:shift]), include_blank: "Todos", class: "form-select" %>
+    <%= submit_tag "Filtrar", class: "btn btn-primary ms-2" %>
+  <% end %>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-sm table-striped table-bordered table-hover tiny-table">
+    <thead class="table-light">
       <tr>
-          <td></td>
-          <td><%= school_classes.grade %></td>
-          <td><%= school_classes.level %></td>
-          <td><%= school_classes.quantity %></td>
-          <td><%= link_to 'Detalhes', school_classes %></td>  
+        <!--<th scope="col" class="text-center">#</th> -->
+        <th scope="col" class="text-center">Ano/Série</th>
+         <th scope="col" class="text-center">Turno</th>
+         <th scope="col" class="text-center">Quantidade</th>
+        <th scope="col" class="text-center">Nível</th>
+        <th scope="col" class="text-center">Ações</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+    </thead>
+    <tbody>
+      <% @school_classes.each_with_index do |school_class, index| %>
+        <tr>
+         <!-- <td class="text-center"><%= index + 1 %></td> -->
+         <td class="text-center"><%= "#{school_class.grade} #{school_class.identifier}" %></td>
+          <td><%= school_class.shift %></td>
+          <td class="text-center"><%= school_class.quantity %></td>
+          <td class="text-center"><%= school_class.level %></td>
+          <td class="text-center">
+            <%= link_to 'Detalhes', school_class, class: "btn btn-info btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+       <td class="text-center"></td>
+       <td class="text-center">Total: <%= @school_classes.sum(:quantity) %></td>
+       <td class="text-center"></td>
+       <td class="text-center"></td>
+    </tfoot>
+  </table>
+</div>

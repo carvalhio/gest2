@@ -1,4 +1,4 @@
-Teacher.create([
+Teacher.find_or_create_by([
 { first_name: 'ALEXANDRA RAYANA SOUZA XAVIER BRAGA', email: 'timbovanessa@gmail.com', phone: nil },
 { first_name: 'ALLAN EMERSON FELIX LIBERATO', email: 'allanliberato75@gmail.com', phone: nil },
 { first_name: 'ANA SHEILA ALVES TRINDADE', email: 'sheilatrd@gmail.com', phone: nil },
@@ -39,27 +39,16 @@ Teacher.create([
 
 ])
 
+
+# Repopulate the table
 SchoolClass.create([
-  { grade: '1º A', level: 'Ensino Fundamental Anos Iniciais', quantity: 70 },
-  { grade: '1º B', level: 'Ensino Fundamental Anos Iniciais', quantity: 70 },
-  { grade: '1º C', level: 'Ensino Fundamental Anos Iniciais', quantity: 70 },
-  { grade: '2º A', level: 'Ensino Fundamental Anos Iniciais', quantity: 65 },
-  { grade: '2º B', level: 'Ensino Fundamental Anos Iniciais', quantity: 75 },
-  { grade: '2º C', level: 'Ensino Fundamental Anos Iniciais', quantity: 75 },
-  { grade: '3º A', level: 'Ensino Fundamental Anos Finais', quantity: 80 },
-  { grade: '3º B', level: 'Ensino Fundamental Anos Finais', quantity: 80 },
-  { grade: '3º C', level: 'Ensino Fundamental Anos Finais', quantity: 80 },
-  { grade: '5º A', level: 'Ensino Fundamental Anos Finais', quantity: 85 },
-  { grade: '5º B', level: 'Ensino Fundamental Anos Finais', quantity: 90 },
-  { grade: '7º ano', level: 'Ensino Fundamental Anos Finais', quantity: 78 },
-  { grade: '8º ano', level: 'Ensino Fundamental Anos Finais', quantity: 92 },
-  { grade: '9º ano', level: 'Ensino Médio', quantity: 88 },
-  { grade: '1ª série', level: 'Ensino Médio', quantity: 76 },
-  { grade: '2ª série', level: 'Ensino Médio', quantity: 82 },
-  { grade: '3ª série', level: 'Ensino Médio', quantity: 0 }
+  { grade: "1º ano", level: "Anos Iniciais", quantity: 30, identifier: "A" },
+  { grade: "1º ano", level: "Anos Iniciais", quantity: 25, identifier: "B" },
+  { grade: "2º ano", level: "Anos Iniciais", quantity: 28, identifier: "A" },
+  # Add more records as needed
 ])
 
-Level.create([{ name: 'Ensino Fundamental Anos Iniciais' }, 
+Level.find_or_create_by([{ name: 'Ensino Fundamental Anos Iniciais' }, 
               { name: 'Ensino Fundamental Anos Finais' }, 
               { name: 'Ensino Médio' }
 ])

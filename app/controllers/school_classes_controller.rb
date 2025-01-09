@@ -3,7 +3,10 @@ class SchoolClassesController < ApplicationController
 
   # GET /school_classes or /school_classes.json
   def index
-    @school_classes = SchoolClass.all
+  @school_classes = SchoolClass.order(:order)
+  @school_classes = @school_classes.where(shift: params[:shift]) if params[:shift].present?
+  @total_quantity = @school_classes.sum(:quantity)
+
   end
 
   # GET /school_classes/1 or /school_classes/1.json
@@ -65,6 +68,7 @@ class SchoolClassesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def school_class_params
-      params.require(:school_class).permit(:grade, :level, :quantity)
+      params.require(:school_class).permit(:grade, :level, :quantity, :identifier, :shift)
     end
+
 end

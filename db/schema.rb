@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_08_191347) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_09_195646) do
   create_table "levels", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -23,6 +23,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_08_191347) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "order"
+    t.string "interger"
+    t.string "identifier"
+    t.string "shift"
+    t.index ["grade", "identifier"], name: "index_school_classes_on_grade_and_identifier", unique: true
   end
 
   create_table "teachers", force: :cascade do |t|

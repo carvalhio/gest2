@@ -69,4 +69,13 @@ body {
     vertical-align: middle; /* Align with text */
 }
 
+.tiny-table th,
+.tiny-table td {
+  padding: 0.1rem !important; /* Minimize padding */
+  font-size: 0.75rem; /* Smaller font size */
+}
+
+.tiny-table th {
+  white-space: nowrap; /* Prevent text wrapping in headers */
+}
 
