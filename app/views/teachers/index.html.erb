@@ -17,10 +17,13 @@
         <td><%= teacher.first_name %></td>
         <td><%= teacher.email %></td>
         <td><%= teacher.phone %></td>
-        <td><%= link_to 'Detalhes', teacher %></td>
+        <td><%= link_to teacher do %>
+          <i class="fas fa-info-circle" title="Detalhes"></i>
+        <% end %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
