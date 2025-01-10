@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col"></th>
+      <th scope="col" class="text-center">#</th>
       <th scope="col">Nome</th>
       <th scope="col">E-mail</th>
       <th scope="col">Número</th>
@@ -11,14 +11,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @teachers.each do |teacher| %>
+    <% @teachers.each_with_index do |teacher, index| %>
       <tr>
-          <td></td>
-          <td><%= teacher.first_name %></td>
-          <td><%= teacher.email %></td>
-          <td><%= teacher.phone %></td>
-          <td><%= link_to 'Detalhes', teacher %></td>
-         
+        <td class="text-center"><%= index + 1 %></td>
+        <td><%= teacher.first_name %></td>
+        <td><%= teacher.email %></td>
+        <td><%= teacher.phone %></td>
+        <td><%= link_to 'Detalhes', teacher %></td>
       </tr>
     <% end %>
   </tbody>

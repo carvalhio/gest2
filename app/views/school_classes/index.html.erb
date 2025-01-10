@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <% content_for :title, "Turmas" %>
 <%= link_to "Nova turma", new_school_class_path, class: "btn btn-primary btn-sm mb-2" %>
+
 <div class="mb-3">
   <%= form_with url: school_classes_path, method: :get, local: true do %>
     <%= label_tag :shift, "Filtrar por turno", class: "form-label" %>
@@ -36,6 +37,7 @@
       <% end %>
     </tbody>
     <tfoot>
+       <td class="text-center"></td>
        <td class="text-center"></td>
        <td class="text-center">Total: <%= @school_classes.sum(:quantity) %></td>
        <td class="text-center"></td>
