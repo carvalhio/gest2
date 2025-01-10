@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_09_195646) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_10_132545) do
   create_table "levels", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -36,5 +36,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_09_195646) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["first_name", "email", "phone"], name: "index_teachers_on_first_name_and_email_and_phone", unique: true
   end
 end
