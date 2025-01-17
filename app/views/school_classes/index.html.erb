@@ -2,10 +2,11 @@
 <% content_for :title, "Turmas" %>
 <%= link_to "Nova turma", new_school_class_path, class: "btn btn-primary btn-sm mb-2" %>
 
-<div class="mb-3">
+<div class="mb-3 col-md-2">
   <%= form_with url: school_classes_path, method: :get, local: true do %>
     <%= label_tag :shift, "Filtrar por turno", class: "form-label" %>
     <%= select_tag :shift, options_for_select(SchoolClass::SHIFTS, params[:shift]), include_blank: "Todos", class: "form-select" %>
+    <br>
     <%= submit_tag "Filtrar", class: "btn btn-primary ms-2" %>
   <% end %>
 </div>
@@ -30,8 +31,8 @@
           <td><%= school_class.shift %></td>
           <td class="text-center"><%= school_class.quantity %></td>
           <td class="text-center"><%= school_class.level %></td>
-          <td class="text-center">
-            <%= link_to 'Detalhes', school_class, class: "btn btn-info btn-sm" %>
+          <td class="text-center ">
+            <%= link_to 'Detalhes', school_class, class: "fas fa-info-circle" %>
           </td>
         </tr>
       <% end %>
@@ -45,3 +46,6 @@
     </tfoot>
   </table>
 </div>
+<%= stylesheet_link_tag 'print', media: 'print' %>
+<%= link_to "Imprimir", "#", class: "btn btn-secondary btn-sm mb-2", onclick: "window.print();" %>
+
