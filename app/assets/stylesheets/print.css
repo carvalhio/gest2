@@ -1,57 +1,18 @@
 @media print {
-  /* Hide unnecessary elements */
-  .btn,
-  .form-label,
-  .form-select,
-  .btn-primary,
-  .mb-3 {
-    display: none !important;
-  }
-
-  /* Ensure the table fits nicely on the page */
-  .table {
-    table-layout: fixed; /* Fix column widths for better printing */
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .table th,
-  .table td {
-    border: 1px solid #000; /* Add borders for better readability */
-    padding: 4px;
-    font-size: 12px;
-  }
-
-  .table th {
-    background-color: #f1f1f1; /* Light background for headers */
-  }
-
-  /* Remove background colors and shadows for print clarity */
-  body {
-    background: #fff !important;
-    color: #000 !important;
-  }
-
-  .table-responsive {
-    overflow: visible !important; /* Ensure the table is fully visible */
-  }
-
-  /* Page break for large tables */
-  tr {
-    page-break-inside: avoid;
-  }
-}
-
-@media print {
-  .print-only {
-    display: block;
-  }
-
-  .no-print {
+  /* Hide other columns */
+  .level-column, .actions-column {
     display: none;
   }
-}
 
-.no-print {
-  display: none;
+  /* Ensure the remaining columns take full width */
+  .grade-column, .shift-column, .quantity-column {
+    display: table-cell;
+    width: auto; /* Let them adjust to content */
+  }
+
+  /* Adjust table layout for print */
+  .table {
+    width: 100%; /* Use full page width for the table */
+    table-layout: auto; /* Automatically adjust column widths */
+  }
 }

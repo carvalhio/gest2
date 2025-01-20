@@ -1,51 +1,48 @@
 <p style="color: green"><%= notice %></p>
-<% content_for :title, "Turmas" %>
-<%= link_to "Nova turma", new_school_class_path, class: "btn btn-primary btn-sm mb-2" %>
 
-<div class="mb-3 col-md-2">
-  <%= form_with url: school_classes_path, method: :get, local: true do %>
-    <%= label_tag :shift, "Filtrar por turno", class: "form-label" %>
-    <%= select_tag :shift, options_for_select(SchoolClass::SHIFTS, params[:shift]), include_blank: "Todos", class: "form-select" %>
-    <br>
-    <%= submit_tag "Filtrar", class: "btn btn-primary ms-2" %>
+<div>
+  <% content_for :title, "Turmas" %>
+  <%= link_to "Nova turma", new_school_class_path, class: "btn btn-info btn-sm mb-2" %>
+
+  <div class="mb-1 col-md-1">
+  <%= form_with url: school_classes_path, method: :get, local: true, id: "shift-filter-form" do %>
+    <!--<%= label_tag :shift, "turno", class: "form-label" %> -->
+    <%= select_tag :shift, 
+          options_for_select(SchoolClass::SHIFTS, params[:shift]), 
+          include_blank: "Todos", 
+          class: "form-select", 
+          onchange: "this.form.submit();" %>
   <% end %>
 </div>
 
-<div class="table-responsive">
-  <table class="table table-sm table-striped table-bordered table-hover tiny-table">
-    <thead class="table-light">
-      <tr>
-        <!--<th scope="col" class="text-center">#</th> -->
-        <th scope="col" class="text-center">Ano/Série</th>
-         <th scope="col" class="text-center">Turno</th>
-         <th scope="col" class="text-center">Quantidade</th>
-        <th scope="col" class="text-center">Nível</th>
-        <th scope="col" class="text-center">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @school_classes.each_with_index do |school_class, index| %>
-        <tr>
-         <!-- <td class="text-center"><%= index + 1 %></td> -->
-         <td class="text-center"><%= "#{school_class.grade} #{school_class.identifier}" %></td>
-          <td><%= school_class.shift %></td>
-          <td class="text-center"><%= school_class.quantity %></td>
-          <td class="text-center"><%= school_class.level %></td>
-          <td class="text-center ">
-            <%= link_to 'Detalhes', school_class, class: "fas fa-info-circle" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-    <tfoot>
-       <td class="text-center"></td>
-       <td class="text-center"></td>
-       <td class="text-center">Total: <%= @school_classes.sum(:quantity) %></td>
-       <td class="text-center"></td>
-       <td class="text-center"></td>
-    </tfoot>
-  </table>
+
 </div>
+
+<table class="table table-sm table-striped table-bordered table-hover tiny-table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col" class="text-center grade-column">Ano/Série</th>
+      <th scope="col" class="text-center shift-column">Turno</th>
+      <th scope="col" class="text-center quantity-column">Quantidade</th>
+      <th scope="col" class="text-center level-column">Nível</th>
+      <th scope="col" class="text-center actions-column">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @school_classes.each do |school_class| %>
+      <tr>
+        <td class="text-center grade-column"><%= "#{school_class.grade} #{school_class.identifier}" %></td>
+        <td class="text-center shift-column"><%= school_class.shift %></td>
+        <td class="text-center quantity-column"><%= school_class.quantity %></td>
+        <td class="text-center level-column"><%= school_class.level %></td>
+        <td class="text-center actions-column">
+          <%= link_to 'Detalhes', school_class, class: "btn btn-info btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= stylesheet_link_tag 'print', media: 'print' %>
 <%= link_to "Imprimir", "#", class: "btn btn-secondary btn-sm mb-2", onclick: "window.print();" %>
 
