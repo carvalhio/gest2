@@ -1,0 +1,31 @@
+<%= form_with(model: teacher, class: "needs-validation", local: true) do |form| %>
+  <% if teacher.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h4>
+      <ul>
+        <% teacher.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 col-md-5">
+    <%= form.label :first_name, "Nome", class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-control form-control-sm" %>
+  </div>
+  
+  <div class="mb-3 col-md-5">
+    <%= form.label :email, "E-mail", class: "form-label" %>
+    <%= form.text_field :email, class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="mb-3 col-md-5">
+    <%= form.label :phone, "Telefone", class: "form-label" %>
+    <%= form.text_field :phone, class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <%= form.submit "Salvar", class: "btn btn-primary btn-sm" %>
+  </div>
+<% end %>

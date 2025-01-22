@@ -1,0 +1,58 @@
+<%= form_with(model: school_class) do |form| %>
+  <% if school_class.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(school_class.errors.count, "error") %> prohibited this school class from being saved:</h4>
+      <ul>
+        <% school_class.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 col-md-4">
+    <%= form.label :grade, "Ano/Série", class: "form-label" %>
+    <%= form.select :grade, options_for_select([
+      "Infantil",
+      "1º ano",
+      "2º ano",
+      "3º ano",
+      "4º ano",
+      "5º ano",
+      "6º ano",
+      "7º ano",
+      "8º ano",
+      "9º ano",
+      "1ª série",
+      "2ª série",
+      "3ª série"
+    ], selected: school_class.grade), { include_blank: "Selecione um ano/série" }, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+  <%= form.label :identifier, "Identificação (Letra)", class: "form-label" %>
+  <%= form.select :identifier, options_for_select(SchoolClass::IDENTIFIERS, selected: school_class.identifier), { include_blank: "Selecione a letra" }, class: "form-select" %>
+</div>
+
+  <div class="mb-3">
+    <%= form.label :shift, "Turno", class: "form-label" %>
+    <%= form.select :shift, options_for_select(SchoolClass::SHIFTS, selected: school_class.shift), { include_blank: "Selecione o turno" }, class: "form-select" %>
+  </div>
+
+
+ <div class="mb-3 col-md-4 col-md-4">
+  <%= form.label :level, "Nível", class: "form-label" %>
+  <%= form.collection_select :level, Level.all, :name, :name, { prompt: "Selecione o nível" }, class: "form-select form-select-sm" %>
+ </div>
+
+  <div class="mb-3 col-md-4">
+    <%= form.label :quantity, "Quantidade", class: "form-label" %>
+    <%= form.number_field :quantity, class: "form-control" %>
+  </div>
+
+  <div class="mt-3">
+    <%= form.submit "Salvar", class: "btn btn-primary" %>
+  </div>
+
+  
+<% end %>

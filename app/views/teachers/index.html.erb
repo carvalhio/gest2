@@ -1,0 +1,29 @@
+<%= link_to "Novo professor", new_teacher_path, class: "btn btn-info btn-sm mb-2" %>
+
+<table class="tiny-table">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Número</th>
+      <th>Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.each_with_index do |teacher, index| %>
+      <tr>
+        <td class="text-center"><%= index + 1 %></td>
+        <td><%= teacher.first_name %></td>
+        <td><%= teacher.email %></td>
+        <td><%= teacher.phone %></td>
+        <td><%= link_to teacher do %>
+          <i class="fas fa-info-circle" title="Detalhes"></i>
+        <% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
