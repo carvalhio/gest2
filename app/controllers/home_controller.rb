@@ -4,4 +4,7 @@ class HomeController < ApplicationController
 
   def about
   end
+
+  def ensinomedio
+  end
 end

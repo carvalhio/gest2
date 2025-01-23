@@ -1,4 +1,14 @@
 @media print {
+  /* Hide all buttons */
+  button, 
+  .btn, 
+  input[type="button"], 
+  input[type="submit"], 
+  input[type="reset"], 
+  a.btn {
+    display: none !important;
+  }
+
   /* Hide other columns */
   .level-column, .actions-column {
     display: none;
@@ -14,5 +24,17 @@
   .table {
     width: 100%; /* Use full page width for the table */
     table-layout: auto; /* Automatically adjust column widths */
+  }
+
+  /* Remove white space at the top of the page */
+  body {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  /* Remove any additional padding or margins added by layout elements */
+  .container, .header {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
