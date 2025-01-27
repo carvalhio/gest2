@@ -1,17 +1,17 @@
 <p style="color: green"><%= notice %></p>
-<h6 class="text-center">Cronograma dos testes Parciais e Globais - 2025</br> Ensino Funadmental - Anos Finais</h6>
+<h6 class="text-center">Cronograma dos testes Parciais e Globais - 2025</br> Ensino Fundamental - Anos Finais</h6>
 <% content_for :title, "Schedules" %>
 <%= link_to "New schedule", new_schedule_path %>
 
-<table class="table table-sm table-bordered border-secondary">
+<table class="table-sm table table-bordered border-secondary">
   <thead>
      <tr>
-      <td class="text-center table-info" colspan="3">1ª etapa</td>
+      <th class="text-center  bg-primary text-white" colspan="3">1ª Etapa</th>
     </tr>
-    <tr>
-      <th class="text-center" scope="col">Período</th>
-      <th class="text-center" scope="col">Data</th>
-      <th class="text-center" scope="col">Comp. Curriculares</th>
+    <tr class="text-center" >
+      <th>Período</th>
+      <th>Data</th>
+      <th>Comp. Curriculares</th>
     </tr>
   </thead>
   <tbody>
@@ -43,9 +43,8 @@
     </tr>
     <tr>
       <td class="text-center table-secondary" style="vertical-align: middle;">03/02,10/02,17/02,24/02 e 07/03</td>
-      <td class="text-center table-secondary"><strong>Segunda Chamada</strong></td>
+      <td class="text-center table-secondary">Segunda Chamada</td>
     </tr>
-    
     <!-- Primeira Etapa - Globais -->
     <tr>
       <td class="text-center" rowspan="7" style="vertical-align: middle;">Globais</td>
@@ -70,28 +69,29 @@
     </tr>
     <tr>
     <!-- Segunda Chamada -->
-       <td class="text-center table-secondary" style="vertical-align: middle;">17/03, 24/03, 31/03, 07/04, e 14/04</td>
-      <td class="text-center table-secondary" colspan="2"><strong>Segunda Chamada</strong></td>
+       <td class="text-center" style="vertical-align: middle;">17/03, 24/03, 31/03, 07/04, e 14/04</td>
+      <td class="text-center" colspan="2">Segunda Chamada</td>
     </tr>
     <!-- Liberação de Notas -->
     <tr>
       <td class="text-center">Liberação das notas</td>
       <td class="text-center" colspan="2">22 de abril</td>
     </tr>
+  </tbody>
+
     <!-- 2ª ETAPA -->
     <tr>
-      <td class="text-center table-info" colspan="3">2ª etapa</td>
+      <th class="text-center bg-primary text-white" colspan="3">2ª Etapa</th>
     </tr>
-    <!-- Continue a partir daqui -->
     <thead>
-    <tr>
-      <th class="text-center" scope="col">Período</th>
-      <th class="text-center" scope="col">Data</th>
-      <th class="text-center" scope="col">Comp. Curriculares</th>
+    <tr class="text-center">
+      <th >Período</th>
+      <th >Data</th>
+      <th >Comp. Curriculares</th>
     </tr>
   </thead>
+  <!-- PARCIAIS -->
   <tbody>
-    <!-- 2ª Etapa - Parciais -->
     <tr>
       <td class="text-center table-secondary" rowspan="6" style="vertical-align: middle;">Parciais</td>
       <td class="text-center table-secondary">15/04</td>
@@ -115,7 +115,7 @@
     </tr>
     <tr>
       <td class="text-center table-secondary" style="vertical-align: middle;">25/04,28/04,05/05,12/05 e 19/05</td>
-      <td class="text-center table-secondary"><strong>Segunda Chamada</strong></td>
+      <td class="text-center table-secondary">Segunda Chamada</td>
     </tr>
     <!-- 2ª Etapa - Globais -->
     <tr>
@@ -142,8 +142,8 @@
 
     <!-- Segunda Chamada -->
     <tr>
+      <td class="text-center">26/05, 09/06, 16/06, 23/26 e 27/06</td>
       <td class="text-center" style="vertical-align: middle;">Segunda Chamada</td>
-      <td class="text-center" colspan="2">26/05, 09/06, 16/06, 23/26 e 27/06</td>
     </tr>
 
     <!-- Liberação de Notas -->
@@ -151,10 +151,11 @@
       <td class="text-center table-success">Semana Sant'Ana de Arte e Ciência</td>
       <td class="text-center" colspan="2">02 a 06 de junho</td>
     </tr>
+  </tbody>
 
-    <!-- 3ª Etapa -->
+    <!-- 3ª ETAPA -->
     <tr>
-      <td class="text-center table-info" colspan="3">3ª etapa</td>
+      <th class="text-center bg-primary text-white" colspan="3">3ª etapa</th>
     </tr>
     <thead>
     <tr>
@@ -188,11 +189,11 @@
     </tr>
     <tr>
       <td class="text-center">16 e 23 de agosto</td>
-      <td class="text-center table-warning">Testes de Recuperação Paralela</td>
+      <td class="text-center">Testes de Recuperação Paralela</td>
     </tr>
     <!-- 3ª Etapa - Globais -->
     <tr>
-      <td class="text-center" rowspan="6" style="vertical-align: middle;">Globais</td>
+      <td class="text-center" rowspan="7" style="vertical-align: middle;">Globais</td>
       <td class="text-center">09/09</td>
       <td class="text-center">Redação</td>
     </tr>
@@ -215,17 +216,18 @@
     <!-- Segunda Chamada -->
     <tr>
       <td class="text-center">15/09, 22/09, 29/09, 06/10, 13/10</td>
-      <td class="text-center table-warning">Segunda Chamada</td>
+      <td class="text-center">Segunda Chamada</td>
     </tr>
     <!-- Liberação de Notas -->
     <tr>
+      <td class="text-center">13/10</td>
       <td class="text-center">Liberação das notas</td>
-      <td class="text-center">13 de outubro</td>
-      <td class="text-center"></td>
     </tr>
+  </tbody>
+  
     <!-- 4ª ETAPA -->
     <tr>
-      <td class="text-center table-info" colspan="3">4ª etapa</td>
+      <th class="text-center bg-primary text-white" colspan="3">4ª Etapa</th>
     </tr>
     <thead>
     <tr>
@@ -235,7 +237,7 @@
     </tr>
   </thead>
   <tbody>
-    <!-- 3ª Etapa - Parciais -->
+    <!-- 4ª Etapa - Parciais -->
     <tr>
       <td class="text-center" rowspan="6" style="vertical-align: middle;">Parciais</td>
       <td class="text-center">14/10</td>
@@ -259,9 +261,9 @@
     </tr>
     <tr>
       <td class="text-center">20/10, 27/10, 03/11, 10/11 e 17/11</td>
-      <td class="text-center table-warning">Segunda chamada</td>
+      <td class="text-center">Segunda chamada</td>
     </tr>
-    <!-- 3ª Etapa - Globais -->
+    <!-- 4ª Etapa - Globais -->
     <tr>
       <td class="text-center" rowspan="6" style="vertical-align: middle;">Globais</td>
       <td class="text-center">18/11</td>
@@ -286,32 +288,28 @@
     <!-- Segunda Chamada -->
     <tr>
       <td class="text-center" >26 e 27/11</td>
-      <td class="text-center table-warning" colspan="2">Segunda Chamada</td>
+      <td class="text-center" colspan="2">Segunda Chamada</td>
     </tr>
     <tr>
-      <td class="text-center">Liberação das notas</td>
-      <td class="text-center" colspan="2">01 de dezembro</td>
+      <td class="text-center table-secondary">Liberação das notas</td>
+      <td class="text-center table-secondary" colspan="2">01 de dezembro</td>
     </tr>
     <tr>
-      <td class="text-center">Aulas de recuperação</td>
-      <td class="text-center" colspan="2">02 a 08 de dezembro</td>
+      <td class="text-center table-secondary">Aulas de recuperação</td>
+      <td class="text-center table-secondary" colspan="2">02 a 08 de dezembro</td>
     </tr>
-
     <tr>
-      <td class="text-center">Testes de recuperação</td>
-      <td class="text-center" colspan="2">09, 10, 11, 12 e 15 de dezembro</td>
+      <td class="text-center table-secondary">Testes de recuperação</td>
+      <td class="text-center table-secondary" colspan="2">09, 10, 11, 12 e 15 de dezembro</td>
     </tr>
-
     <tr>
-      <td class="text-center">Conselho de classe</td>
-      <td class="text-center" colspan="2">17 e 18 de dezembro</td>
+      <td class="text-center table-secondary">Conselho de classe</td>
+      <td class="text-center table-secondary" colspan="2">17 e 18 de dezembro</td>
     </tr>
-
     <tr>
-      <td class="text-center">Resultado final</td>
-      <td class="text-center" colspan="2">19 de dezembro</td>
+      <td class="text-center table-secondary">Resultado final</td>
+      <td class="text-center table-secondary" colspan="2">19 de dezembro</td>
     </tr>
-
   </tbody>
 </table>
 <br>
