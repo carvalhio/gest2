@@ -1,0 +1,81 @@
+<p style="color: green"><%= notice %></p>
+<h6 class="text-center">Cronograma dos testes Parciais e Globais - 2025</br> Ensino Fundamental - Iniciais</h6>
+<% content_for :title, "Schedules" %>
+<%= link_to "New schedule", new_schedule_path %>
+
+<table class="table-sm table table-bordered border-secondary">
+  <thead>
+     <tr>
+      <th class="text-center text-white bg-primary" colspan="4">1ª Etapa</th>
+    </tr>
+    <tr class="text-center table-primary" >
+      <th class="narrow-column">Tipo</th>
+      <th>Turmas</th>
+      <th>Data</th>
+      <th>Comp. Curriculares</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Primeira Etapa - Parciais 1º ANO-->
+    <tr>
+      <td class="text-center vertical-text table-info" rowspan="12" >Parciais</td>
+      <td class="text-center" rowspan="6" style="vertical-align: middle;">1º ano</td>
+      <td class="text-center">22/01</td>
+      <td class="text-center">Sondagem 2025 (Português e Matemática)</td>
+    </tr>
+    <tr>
+      <td class="text-center">29/01</td>
+      <td class="text-center">Redação</td>
+    </tr>
+    <tr>
+      <td class="text-center">05/02</td>
+      <td class="text-center">Língua Portuguesa</td>
+    </tr>
+    <tr>
+      <td class="text-center">12/02</td>
+      <td class="text-center">Matemática</td>
+    </tr>
+    <tr>
+      <td class="text-center">19/02</td>
+      <td class="text-center">Língua Inglesa</td>
+    </tr>
+    <tr>
+      <td class="text-center">26/02</td>
+      <td class="text-center">Natureza e Sociedade</td>
+    </tr>
+   
+    <!-- 1ª ETAPA - 2º ANO (Parciais) -->
+    <tr class="table-secondary">
+      <td class="text-center" rowspan="7" style="vertical-align: middle;">Parciais</br>(2º ano ao 5º ano)</td>
+      <td class="text-center">29/01</td>
+      <td class="text-center">Redação</td>
+    </tr>
+    <tr class="table-secondary">
+      <td class="text-center">05/02</td>
+      <td class="text-center">Lingua Portuguesa</td>
+    </tr>
+    <tr class="table-secondary">
+      <td class="text-center">12/02</td>
+      <td class="text-center">Matemática</td>
+    </tr>
+    <tr class="table-secondary">
+      <td class="text-center">19/02</td>
+      <td class="text-center">Língua Inglesa e Geografia</td>
+    </tr>
+    <tr class="table-secondary">
+      <td class="text-center">26/02</td>
+      <td class="text-center">História e Ciências</td>
+    </tr>
+    <tr class="table-secondary">
+    <!-- Segunda Chamada -->
+       <td class="text-center" style="vertical-align: middle;">03/02, 10/02, 17/02, 24/02 e 07/03</td>
+      <td class="text-center" colspan="2">Segunda Chamada</td>
+    </tr>
+
+    <!-- GLOBAIS (1ª ETAPA)-->
+
+    <!-- Liberação de Notas -->
+    
+  </tbody>
+</table>
+<br>

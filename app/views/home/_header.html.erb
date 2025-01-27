@@ -20,7 +20,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="testesDropdown" data-bs-toggle="dropdown" aria-expanded="false">Cronograma</a>
           <ul class="dropdown-menu" aria-labelledby="testesDropdown">
             <li><a class="dropdown-item" href="#">Ensino Infantil</a></li>
-            <li><a class="dropdown-item" href="#">E.F. Anos Iniciais</a></li>
+            <li><%= link_to "Anos Iniciais", anos_iniciais_schedules_path, class:"dropdown-item" %> </li>
             <li><%= link_to "E.F. Anos Finais", schedules_path, class:"dropdown-item" %></li>
             <li><a class="dropdown-item" href="#">Ensino Médio</a></li>
           </ul>

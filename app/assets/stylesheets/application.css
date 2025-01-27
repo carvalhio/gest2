@@ -96,3 +96,17 @@ body {
   width: 3rem;
   height: 3rem;
 }
+
+  .vertical-text {
+    writing-mode: vertical-rl; /* Texto na vertical */
+    text-orientation: mixed; /* Mantém os caracteres na posição correta */
+    transform: rotate(180deg); /* Opcional: vira o texto para ler de baixo para cima */
+}
+
+
+  .narrow-column {
+    white-space: nowrap; /* Prevents text wrapping */
+    width: 1%; /* Shrinks column to its minimum width */
+  }
+
+ 
