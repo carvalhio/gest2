@@ -1,9 +1,11 @@
 <p style="color: green"><%= notice %></p>
+
+<%= stylesheet_link_tag "tablestyle", media: "all", "data-turbo-track": "reload" %>
 <h6 class="text-center">Cronograma dos testes Parciais e Globais - 2025</br> Ensino Fundamental - Iniciais</h6>
-<% content_for :title, "Schedules" %>
+
 <%= link_to "New schedule", new_schedule_path %>
 
-<table class="table-sm table table-bordered border-secondary">
+<table class="custom-table table table-bordered border-secondary">
   <thead>
      <tr>
       <th class="text-center text-white bg-primary" colspan="4">1ª Etapa</th>
@@ -77,7 +79,7 @@
   <tbody>
     <!-- Primeira Etapa - GLOBAIS 1º ANO-->
     <tr>
-      <td class="text-center vertical-text table-warning" rowspan="12" >GLOBAIS</td>
+      <td class="text-center vertical-text table-warning" rowspan="11" >GLOBAIS</td>
       <td class="text-center" rowspan="5" style="vertical-align: middle;">1º ano</td>
       <td class="text-center">12/03</td>
       <td class="text-center">Redação</td>
@@ -125,6 +127,10 @@
     <!-- Segunda Chamada -->
        <td class="text-center" style="vertical-align: middle;">17/03,24/03,31/03,07/04 e 14/04</td>
       <td class="text-center" colspan="2">Segunda Chamada</td>
+    </tr>
+    <tr class="table-secondary">
+      <td class="text-center" colspan="2">Liberação das notas</td>
+      <td class="text-center" colspan="2">22 de abril</td>
     </tr>
   </tbody>
 </table>

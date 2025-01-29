@@ -1,0 +1,29 @@
+.custom-table {
+  width: auto; /* Prevents full-page width */
+  border-collapse: collapse; /* Removes extra space between borders */
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 4px 8px; /* Slightly increase padding for readability */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-align: center;
+}
+
+.custom-table th:first-child,
+.custom-table td:first-child {
+  width: 1%; /* Makes the first column as small as possible */
+}
+
+.custom-table th:nth-child(3),
+.custom-table td:nth-child(3) {
+  min-width: 80px; /* Ensures the Date column has enough space */
+  white-space: nowrap;
+}
+
+.custom-table th,
+.custom-table td {
+  max-width: 200px; /* Set a reasonable max width for all columns */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
