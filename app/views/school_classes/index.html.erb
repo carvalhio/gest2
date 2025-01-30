@@ -1,19 +1,18 @@
 <p style="color: green"><%= notice %></p>
+
 <div>
-<% content_for :title, "Turmas" %>
-<%= link_to "Nova turma", new_school_class_path, class: "btn btn-info btn-sm mb-2" %>
-<div class="mb-1 col-md-1">
-<%= form_with url: school_classes_path, method: :get, local: true, id: "shift-filter-form" do %>
-<!--<%= label_tag :shift, "turno", class: "form-label" %> -->
-<%= select_tag :shift,
-options_for_select(SchoolClass::SHIFTS, params[:shift]),
-include_blank: "Todos",
-class: "form-select",
-onchange: "this.form.submit();" %>
-<% end %>
+	<% content_for :title, "Turmas" %>
+	<%= link_to "Nova turma", new_school_class_path, class: "btn btn-info btn-sm mb-2" %>
+	
+	<div class="mb-1 col-md-1">
+		<%= form_with url: school_classes_path, method: :get, local: true, id: "shift-filter-form" do %>
+		<%= select_tag :shift, options_for_select(SchoolClass::SHIFTS, params[:shift]),
+			include_blank: "Todos",class: "form-select",onchange: "this.form.submit();" %>
+		<% end %>
+	</div>
 </div>
-</div>
-<table class="table table-sm table-striped table-bordered table-hover tiny-table">
+
+<table class="tiny-table table-sm table-bordered table-hover">
 <thead class="table-light">
 <tr>
 <th scope="col" class="text-center grade-column">Ano/Série</th>
@@ -24,6 +23,7 @@ onchange: "this.form.submit();" %>
 </tr>
 </thead>
 <tbody>
+
 <% @school_classes.each do |school_class| %>
 <tr>
 <td class="text-center grade-column"><%= "#{school_class.grade} #{school_class.identifier}" %></td>
@@ -31,10 +31,12 @@ onchange: "this.form.submit();" %>
 <td class="text-center quantity-column"><%= school_class.quantity %></td>
 <td class="text-center level-column"><%= school_class.level %></td>
 <td class="text-center actions-column">
-<%= link_to 'Detalhes', school_class, class: "btn btn-info btn-sm" %>
+
+<%= link_to 'Detalhes', school_class, class: "text-info text-decoration-none" %>
 </td>
 </tr>
 <% end %>
+
 </tbody>
 <tfoot>
 <tr>
@@ -44,6 +46,7 @@ onchange: "this.form.submit();" %>
 </tr>
 </tfoot>
 </table>
+
 <%= stylesheet_link_tag 'print', media: 'print' %>
 <%= link_to "Imprimir", "#", class: "btn btn-secondary btn-sm mb-2", onclick: "window.print();" %>
 
