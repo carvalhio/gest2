@@ -78,7 +78,7 @@ class SchoolClassesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def school_class_params
-      params.require(:school_class).permit(:grade, :level, :quantity, :identifier, :shift)
+      params.require(:school_class).permit(:grade, :level, :quantity, :identifier, :shift, :adpt)
     end
 
 end

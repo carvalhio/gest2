@@ -18,6 +18,7 @@
 <th scope="col" class="text-center grade-column">Ano/Série</th>
 <th scope="col" class="text-center shift-column">Turno</th>
 <th scope="col" class="text-center quantity-column">Quantidade</th>
+<th scope="col" class="text-center adpt-column">Qtd. Adaptados</th>
 <th scope="col" class="text-center level-column">Nível</th>
 <th scope="col" class="text-center actions-column">Ações</th>
 </tr>
@@ -29,6 +30,7 @@
 <td class="text-center grade-column"><%= "#{school_class.grade} #{school_class.identifier}" %></td>
 <td class="text-center shift-column"><%= school_class.shift %></td>
 <td class="text-center quantity-column"><%= school_class.quantity %></td>
+<td class="text-center"><%= school_class.adpt %></td>
 <td class="text-center level-column"><%= school_class.level %></td>
 <td class="text-center actions-column">
 
