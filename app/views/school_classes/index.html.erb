@@ -41,14 +41,15 @@
 
 </tbody>
 <tfoot>
-<tr>
-<td colspan="2"></td>
-<td class="text-center">Total: <%= @school_classes.sum(:quantity) %> alunos</td>
-<td colspan="2"></td>
-</tr>
+	<tr>
+		<td colspan="2"></td>
+		<td class="text-center">Total: <%= @school_classes.sum(:quantity) %></td>
+		<td class="text-center">Total: <%= @school_classes.sum(:adpt) %></td>
+		<td></td>
+	</tr>
 </tfoot>
 </table>
-
+</br>
 <%= stylesheet_link_tag 'print', media: 'print' %>
 <%= link_to "Imprimir", "#", class: "btn btn-secondary btn-sm mb-2", onclick: "window.print();" %>
 

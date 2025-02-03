@@ -10,6 +10,7 @@ class SchoolClassesController < ApplicationController
       @school_classes = SchoolClass.all
     end
 
+    @total_adpt = @school_classes.sum(:adpt)  # Sum all adapted tests
     # Apply custom sorting logic
     @school_classes = @school_classes.order(Arel.sql("CASE 
       WHEN level = 'Ensino Infantil' THEN 1
@@ -18,6 +19,13 @@ class SchoolClassesController < ApplicationController
       WHEN level = 'Ensino Médio' THEN 4
       ELSE 4 END"), :grade, :shift)
   end
+
+
+
+
+ 
+
+
 
   # GET /school_classes/1 or /school_classes/1.json
   def show
@@ -38,7 +46,7 @@ class SchoolClassesController < ApplicationController
 
     respond_to do |format|
       if @school_class.save
-        format.html { redirect_to @school_class, notice: "School class was successfully created." }
+        format.html { redirect_to @school_class, notice: "Turma cadastrada!" }
         format.json { render :show, status: :created, location: @school_class }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,7 +59,7 @@ class SchoolClassesController < ApplicationController
   def update
     respond_to do |format|
       if @school_class.update(school_class_params)
-        format.html { redirect_to @school_class, notice: "School class was successfully updated." }
+        format.html { redirect_to @school_class, notice: "Turma atualizada!." }
         format.json { render :show, status: :ok, location: @school_class }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,7 +73,7 @@ class SchoolClassesController < ApplicationController
     @school_class.destroy!
 
     respond_to do |format|
-      format.html { redirect_to school_classes_path, status: :see_other, notice: "School class was successfully destroyed." }
+      format.html { redirect_to school_classes_path, status: :see_other, notice: "Turma deletada!" }
       format.json { head :no_content }
     end
   end
