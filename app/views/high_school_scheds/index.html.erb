@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "High school scheds" %>
+
+<h1>High school scheds</h1>
+
+<%= link_to "New high school sched", new_high_school_sched_path %>
+
+
+<table class="tiny-table">
+  <thead>
+    <tr>
+   
+      <th scope="col">Período</th>
+      <th scope="col">Data</th>
+      <th scope="col">Comp. Curriculaes</th>
+      <th>Editar</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @high_school_scheds.each_with_index do |high_school_sched, index| %>
+      <tr>
+        <td><%= high_school_sched.stage %></td>
+        <td><%= high_school_sched.formatted_date %></td>
+       <td><%= high_school_sched.subjects.map(&:name).join(', ') %></td>
+        <td><%= link_to high_school_sched do %>
+         <td> <i class="fas fa-info-circle" title="Detalhes"></i></td>
+        <% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
