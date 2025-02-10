@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :high_school_scheds
   resources :schedules do
     collection do
       get :anos_iniciais   # Route for "Anos Iniciais"
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :school_classes
   resources :teachers
+  resources :subjects
+  resources :high_school_scheds
 
   get "up" => "rails/health#show", as: :rails_health_check
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
