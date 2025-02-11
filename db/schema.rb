@@ -10,15 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_11_121933) do
-  create_table "schedules", force: :cascade do |t|
-    t.string "stage"
-    t.string "grade_application"
-    t.date "date"
-    t.integer "subject_id", null: false
+ActiveRecord::Schema[7.2].define(version: 2025_02_11_175832) do
+  create_table "levels", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_schedules_on_subject_id"
   end
 
   create_table "school_classes", force: :cascade do |t|
