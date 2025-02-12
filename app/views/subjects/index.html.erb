@@ -1,0 +1,21 @@
+<h6>Componentes Curriculares</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comp. Curricular</th>
+      <th>Professor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td><%= subject.subject_name %></td>
+        <td><%= subject.teacher.name %></td>
+        <td>
+          <%= link_to 'Editar', edit_subject_path(subject) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

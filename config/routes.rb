@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get 'home/about'
   root 'home#index'
+  get '/subjects', to: 'subjects#index'
+  patch '/subjects/:id', to: 'subjects#update'
 end
 
 

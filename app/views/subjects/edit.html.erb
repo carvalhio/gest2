@@ -1,0 +1,11 @@
+<h1>Editar Disciplina</h1>
+
+<%= form_for(@subject) do |form| %>
+  <%= form.label :subject_name %>
+  <%= form.text_field :subject_name %>
+
+  <%= form.label :teacher_id %>
+  <%= form.collection_select :teacher_id, Teacher.all, :id, :name %>
+
+  <%= form.submit 'Atualizar Disciplina' %>
+<% end %>

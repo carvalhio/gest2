@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_11_175832) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_11_195412) do
+  create_table "high_schools", force: :cascade do |t|
+    t.string "stage"
+    t.string "period"
+    t.date "date"
+    t.integer "subject_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_high_schools_on_subject_id"
+  end
+
   create_table "levels", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -32,12 +42,24 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_11_175832) do
     t.index ["grade", "identifier"], name: "index_school_classes_on_grade_and_identifier", unique: true
   end
 
+  create_table "subjects", force: :cascade do |t|
+    t.string "subject_name"
+    t.integer "teacher_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_id"], name: "index_subjects_on_teacher_id"
+  end
+
   create_table "teachers", force: :cascade do |t|
-    t.string "first_name"
+    t.string "name"
     t.string "email"
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["first_name", "email", "phone"], name: "index_teachers_on_first_name_and_email_and_phone", unique: true
+    t.index ["email"], name: "index_teachers_on_email", unique: true
+    t.index ["name", "email", "phone"], name: "index_teachers_on_name_and_email_and_phone", unique: true
   end
+
+  add_foreign_key "high_schools", "subjects"
+  add_foreign_key "subjects", "teachers"
 end

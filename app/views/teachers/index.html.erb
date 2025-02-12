@@ -14,13 +14,13 @@
     <% @teachers.each_with_index do |teacher, index| %>
       <tr>
         <td class="text-center"><%= index + 1 %></td>
-        <td><%= teacher.first_name %></td>
+        <td><%= teacher.name %></td>
         <td><%= teacher.email %></td>
         <td><%= teacher.phone %></td>
-        <td><%= link_to teacher do %>
-          <i class="fas fa-info-circle" title="Detalhes"></i>
-        <% end %></td>
-      </tr>
+        
+       <td>
+          <%= link_to 'Editar', edit_teacher_path(teacher) %>
+        </td>
     <% end %>
   </tbody>
 </table>
