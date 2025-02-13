@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/subjects', to: 'subjects#index'
   patch '/subjects/:id', to: 'subjects#update'
+   
 end
 
 

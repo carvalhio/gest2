@@ -1,10 +1,11 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/teachers/show.html.erb -->
 
-<%= render @teacher %>
+<h1>Professor: <%= @teacher.name %></h1>
 
-<div>
-  <%= link_to "Editar", edit_teacher_path(@teacher) %> |
-  <%= link_to "Voltar para Professores", teachers_path %>
+<h2>Disciplinas ministradas:</h2>
 
-  <%= button_to "Deletar", @teacher, method: :delete %>
-</div>
+<ul>
+  <% @teacher.subjects.each do |subject| %>
+    <li><%= subject.subject_name %></li>
+  <% end %>
+</ul>

@@ -1,30 +1,30 @@
-<%= link_to "Novo professor", new_teacher_path, class: "btn btn-info btn-sm mb-2" %>
+<!-- app/views/teachers/index.html.erb -->
 
-<table class="tiny-table">
+<h1>Professores</h1>
+<%= link_to 'Novo Professor', new_teacher_path, class: 'btn btn-primary' %>
+<table>
   <thead>
     <tr>
-      <th scope="col" class="text-center">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">E-mail</th>
-      <th scope="col">Número</th>
-      <th>Editar</th>
+      <th>Nome do Professor</th>
+      <th>Email</th>
+      <th>Disciplinas</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
-    <% @teachers.each_with_index do |teacher, index| %>
+    <% @teachers.each do |teacher| %>
       <tr>
-        <td class="text-center"><%= index + 1 %></td>
         <td><%= teacher.name %></td>
         <td><%= teacher.email %></td>
-        <td><%= teacher.phone %></td>
-        
-       <td>
+        <td>
+          <% teacher.subjects.each do |subject| %>
+            <%= subject.subject_name %><br>
+          <% end %>
+        </td>
+        <td>
           <%= link_to 'Editar', edit_teacher_path(teacher) %>
         </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-<%= stylesheet_link_tag 'print', media: 'print' %>
-<%= link_to "Imprimir", "#", class: "btn btn-secondary btn-sm mb-2", onclick: "window.print();" %>
-<br>
-

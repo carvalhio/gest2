@@ -11,9 +11,8 @@ class SchoolClass < ApplicationRecord
   validates :grade, inclusion: { in: GRADES, message: "%{value} não é uma opção válida" }
   validates :identifier, presence: true, length: { maximum: 3 }
   validates :grade, uniqueness: { scope: :identifier, message: "e Identificação já foram registrados para outra turma." }
-  validates :adpt, numericality: { greater_than_or_equal_to: 0 }
+  validates :adpt, numericality: { allow_nil: true, allow_blank: true }
   
   validates :shift, presence: true, inclusion: { in: SHIFTS, message: "%{value} não é um turno válido" }
 
 end
-

@@ -5,7 +5,10 @@ class TeachersController < ApplicationController
     @teachers = Teacher.all
   end
 
-  def show; end
+  def show
+    @teacher = Teacher.find(params[:id])
+    @subjects = @teacher.subjects
+   end
 
   def new
     @teacher = Teacher.new
@@ -23,13 +26,18 @@ class TeachersController < ApplicationController
     end
   end
 
-  def update
-    if @teacher.update(teacher_params)
-      redirect_to @teacher, notice: 'Professor atualizado com sucesso!'
-    else
-      render :edit
-    end
+
+
+def update
+  @teacher = Teacher.find(params[:id])
+  if @teacher.update(teacher_params)
+    @teacher.subject_ids = params[:teacher][:subject_ids]
+    @teacher.save
+    redirect_to teachers_path, notice: 'Professor atualizado com sucesso!'
+  else
+    render :edit
   end
+end
 
   def destroy
     @teacher.destroy
@@ -43,6 +51,10 @@ class TeachersController < ApplicationController
   end
 
   def teacher_params
-    params.require(:teacher).permit(:name, :email, :phone)
+    params.require(:teacher).permit(:name, :email, :phone, subject_ids: [])
   end
 end
+
+
+
+
