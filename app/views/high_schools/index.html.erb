@@ -1,0 +1,29 @@
+<h1>Cronograma 2025<\br>Ensino Médio</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Etapa</th>
+      <th>Período</th>
+      <th>Data</th>
+      <th>Disciplina</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @high_schools.each do |high_school| %>
+      <tr>
+        <td><%= high_school.stage %></td>
+        <td><%= high_school.period %></td>
+        <td><%= high_school.date %></td>
+        <td><%= high_school.subject.subject_name %></td>
+        <td>
+          <%= link_to 'Editar', edit_high_school_path(high_school) %>
+          <%= link_to 'Excluir', high_school_path(high_school), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Novo Registro', new_high_school_path %>

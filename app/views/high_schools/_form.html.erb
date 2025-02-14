@@ -1,0 +1,20 @@
+<!-- app/views/high_schools/_form.html.erb -->
+
+<%= form_for(@high_school) do |form| %>
+  <%= form.label :stage %>
+  <%= form.text_field :stage %>
+
+  <%= form.label :period %>
+  <%= form.text_field :period %>
+
+  <%= form.label :date %>
+  <%= form.date_field :date %>
+
+  <div class="mb-3">
+    <%= form.label :subject_id, "Comp. Curricular", class:"form-label" %>
+    <%= form.collection_select :subject_id, Subject.all, :id, :subject_name, class:"form-select", style:"width: 100%;" %>
+  </div>
+  
+  <%= form.submit %>
+<% end %>
+

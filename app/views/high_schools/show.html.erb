@@ -1,0 +1,27 @@
+<!-- app/views/high_schools/show.html.erb -->
+
+<h1>Ensino Médio</h1>
+
+<p>
+  <strong>Etapa:</strong>
+  <%= @high_school.stage %>
+</p>
+
+<p>
+  <strong>Período:</strong>
+  <%= @high_school.period %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @high_school.date %>
+</p>
+
+<p>
+  <strong>Disciplina:</strong>
+  <%= @high_school.subject.subject_name %>
+</p>
+
+<%= link_to 'Editar', edit_high_school_path(@high_school) %>
+<%= link_to 'Excluir', high_school_path(@high_school), method: :delete %>
+<%= link_to 'Voltar', high_schools_path %>

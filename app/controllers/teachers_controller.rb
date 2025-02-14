@@ -26,8 +26,6 @@ class TeachersController < ApplicationController
     end
   end
 
-
-
 def update
   @teacher = Teacher.find(params[:id])
   if @teacher.update(teacher_params)

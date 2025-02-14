@@ -108,7 +108,7 @@ body {
     writing-mode: vertical-rl; /* Texto na vertical */
     text-orientation: mixed; /* Mantém os caracteres na posição correta */
     transform: rotate(180deg); /* Opcional: vira o texto para ler de baixo para cima */
-}
+  }
 
 
   .narrow-column {
@@ -116,4 +116,6 @@ body {
     width: 1%; /* Shrinks column to its minimum width */
   }
 
- 
+ .form-select {
+  width: 100%;
+}
