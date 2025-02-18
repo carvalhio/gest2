@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_11_195412) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_18_173320) do
+  create_table "high_school_subjects", force: :cascade do |t|
+    t.integer "high_school_id", null: false
+    t.integer "subject_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["high_school_id"], name: "index_high_school_subjects_on_high_school_id"
+    t.index ["subject_id"], name: "index_high_school_subjects_on_subject_id"
+  end
+
   create_table "high_schools", force: :cascade do |t|
     t.string "stage"
     t.string "period"
@@ -60,6 +69,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_11_195412) do
     t.index ["name", "email", "phone"], name: "index_teachers_on_name_and_email_and_phone", unique: true
   end
 
+  add_foreign_key "high_school_subjects", "high_schools"
+  add_foreign_key "high_school_subjects", "subjects"
   add_foreign_key "high_schools", "subjects"
   add_foreign_key "subjects", "teachers"
 end

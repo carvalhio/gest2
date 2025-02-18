@@ -43,6 +43,6 @@ class HighSchoolsController < ApplicationController
   end
 
   def high_school_params
-    params.require(:high_school).permit(:stage, :period, :date, :subject_id)
+    params.require(:high_school).permit(:stage, :period, :date, subject_ids: [])
   end
 end
