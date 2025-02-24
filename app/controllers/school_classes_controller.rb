@@ -21,12 +21,6 @@ class SchoolClassesController < ApplicationController
   end
 
 
-
-
- 
-
-
-
   # GET /school_classes/1 or /school_classes/1.json
   def show
   end
@@ -66,7 +60,25 @@ class SchoolClassesController < ApplicationController
         format.json { render json: @school_class.errors, status: :unprocessable_entity }
       end
     end
+    @teacher = Teacher.find(params[:id])
+    if @teacher.update(teacher_params)
+      redirect_to @teacher, notice: 'Professor atualizado com sucesso.'
+    else
+      render :edit
+    end
   end
+
+  #inciio_correcao
+
+  def update
+    @teacher = Teacher.find(params[:id])
+    if @teacher.update(teacher_params)
+      redirect_to @teacher, notice: 'Professor atualizado com sucesso.'
+    else
+      render :edit
+    end
+  end
+  #fim_correcao
 
   # DELETE /school_classes/1 or /school_classes/1.json
   def destroy
@@ -89,4 +101,14 @@ class SchoolClassesController < ApplicationController
       params.require(:school_class).permit(:grade, :level, :quantity, :identifier, :shift, :adpt)
     end
 
+end
+
+
+
+
+
+private
+
+def teacher_params
+  params.require(:teacher).permit(:name, :email, :teacher_id, subject_ids: [])
 end

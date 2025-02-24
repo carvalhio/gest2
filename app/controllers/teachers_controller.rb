@@ -22,20 +22,27 @@ class TeachersController < ApplicationController
     if @teacher.save
       redirect_to @teacher, notice: 'Professor criado com sucesso!'
     else
-      render :new
+       render :new, status: :unprocessable_entity
     end
   end
 
+
 def update
   @teacher = Teacher.find(params[:id])
+
+  # Remove IDs vazios para evitar erro no banco
+  params[:teacher][:subject_ids]&.reject!(&:blank?)
+
   if @teacher.update(teacher_params)
     @teacher.subject_ids = params[:teacher][:subject_ids]
     @teacher.save
-    redirect_to teachers_path, notice: 'Professor atualizado com sucesso!'
+    #redirect_to teachers_path, notice: 'Professor atualizado com sucesso!'
+    redirect_to @teacher, notice: 'Professor atualizado com sucesso!'
   else
-    render :edit
+    render :edit, status: :unprocessable_entity
   end
 end
+
 
   def destroy
     @teacher.destroy
@@ -56,3 +63,16 @@ end
 
 
 
+
+def create
+  @teacher = Teacher.new(teacher_params)
+  if @teacher.save
+    redirect_to teachers_path, notice: "Professor cadastrado com sucesso!"
+  else
+    render :new, status: :unprocessable_entity
+  end
+end
+
+def update
+  
+end

@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: teacher, class: "needs-validation", local: true) do |form| %>
   <% if teacher.errors.any? %>
     <div class="alert alert-danger">
@@ -25,10 +27,15 @@
     <%= form.text_field :phone, class: "form-control form-control-sm" %>
   </div>
 
-  <%= form.label :subjects %>
+
+<%= form.label :subjects %>
   <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :subject_name %>
+
 
   <div class="d-flex justify-content-end">
     <%= form.submit "Salvar", class: "btn btn-primary btn-sm" %>
   </div>
 <% end %>
+
+
+

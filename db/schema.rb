@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_18_173320) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_24_165503) do
   create_table "high_school_subjects", force: :cascade do |t|
     t.integer "high_school_id", null: false
     t.integer "subject_id", null: false
@@ -59,6 +59,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_18_173320) do
     t.index ["teacher_id"], name: "index_subjects_on_teacher_id"
   end
 
+  create_table "subjects_teachers", id: false, force: :cascade do |t|
+    t.integer "teacher_id", null: false
+    t.integer "subject_id", null: false
+    t.index ["subject_id"], name: "index_subjects_teachers_on_subject_id"
+    t.index ["teacher_id"], name: "index_subjects_teachers_on_teacher_id"
+  end
+
   create_table "teachers", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -73,4 +80,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_18_173320) do
   add_foreign_key "high_school_subjects", "subjects"
   add_foreign_key "high_schools", "subjects"
   add_foreign_key "subjects", "teachers"
+  add_foreign_key "subjects_teachers", "subjects"
+  add_foreign_key "subjects_teachers", "teachers"
 end
