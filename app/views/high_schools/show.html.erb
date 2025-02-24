@@ -1,4 +1,3 @@
-<!-- app/views/high_schools/show.html.erb -->
 
 <h1>Ensino Médio</h1>
 
@@ -18,9 +17,10 @@
 </p>
 
 <p>
-  <strong>Disciplina:</strong>
-  <%= @high_school.subject.subject_name %>
+  <strong>Disciplinas:</strong>
+  <%= @high_school.subjects.map(&:subject_name).join(", ") %>
 </p>
+
 
 <%= link_to 'Editar', edit_high_school_path(@high_school) %>
 <%= link_to 'Excluir', high_school_path(@high_school), method: :delete %>

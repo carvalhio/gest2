@@ -73,6 +73,3 @@ def create
   end
 end
 
-def update
-  
-end

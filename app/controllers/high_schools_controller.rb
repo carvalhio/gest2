@@ -19,15 +19,17 @@ class HighSchoolsController < ApplicationController
     if @high_school.save
       redirect_to @high_school, notice: 'Registro de ensino médio criado com sucesso!'
     else
-      render :new
+       render :new, status: :unprocessable_entity
     end
   end
 
   def update
+      @high_school = HighSchool.find(params[:id])
+      
     if @high_school.update(high_school_params)
       redirect_to @high_school, notice: 'Registro de ensino médio atualizado com sucesso!'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
