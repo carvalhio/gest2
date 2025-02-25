@@ -5,6 +5,16 @@ import "controllers"
 import Rails from "@rails/ujs"
 Rails.start()
 
+import "select2"
+
+document.addEventListener("DOMContentLoaded", function() {
+  $('.select2-multiple').select2({
+    placeholder: "Selecione as disciplinas",
+    allowClear: true
+  });
+});
+
+
  document.addEventListener('DOMContentLoaded', () => {
         // Toggle main dropdown
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {

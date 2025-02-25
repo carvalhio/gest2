@@ -1,16 +1,32 @@
 <%= form_for(@high_school) do |form| %>
-  <%= form.label :stage %>
-  <%= form.text_field :stage %>
+  <div class="mb-3">
+    <%= form.label :stage, "Etapa", class: "form-label" %>
+    <%= form.select :stage, HighSchool::STAGES, { prompt: "Selecione a Etapa" }, class: "form-select" %>
+  </div>
 
-  <%= form.label :period %>
-  <%= form.text_field :period %>
+  <div class="mb-3">
+    <%= form.label :period, "Período", class: "form-label" %>
+    <%= form.select :period, HighSchool::PERIODS, { prompt: "Selecione o Período" }, class: "form-select" %>
+  </div>
 
   <%= form.label :date %>
   <%= form.date_field :date %>
 
 
-<%= form.label :subjects %>
-  <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :subject_name %>
+<div class="mb-3">
+    <%= form.label :subject_ids, "Comp. Curricular", class: "form-label" %>
+    <%= form.select :subject_ids, Subject.all.pluck(:subject_name, :id), {}, { multiple: true, class: "form-control select2-multiple" } %>
+  </div>
+<script>
+$(document).ready(function() {
+    $('.select2-multiple').select2({
+        placeholder: "Selecione as Comp. Curriculares",
+        allowClear: true
+    });
+});
+</script>
 
   <%= form.submit %>
 <% end %>
+
+
