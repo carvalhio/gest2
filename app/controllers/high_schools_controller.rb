@@ -33,10 +33,20 @@ class HighSchoolsController < ApplicationController
     end
   end
 
+
   def destroy
-    @high_school.destroy
-    redirect_to high_schools_url, notice: 'Registro de ensino médio excluído com sucesso!'
+  @high_school = HighSchool.find(params[:id])
+
+  # Destroy associated records first
+  @high_school.high_school_subjects.destroy_all
+
+  if @high_school.destroy
+    redirect_to high_schools_path, notice: 'High school record was successfully deleted.'
+  else
+    redirect_to high_schools_path, alert: 'Error deleting high school record.'
   end
+end
+
 
   private
 

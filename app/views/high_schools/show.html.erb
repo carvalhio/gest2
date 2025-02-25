@@ -23,5 +23,7 @@
 
 
 <%= link_to 'Editar', edit_high_school_path(@high_school) %>
-<%= link_to 'Excluir', high_school_path(@high_school), method: :delete %>
+<%= link_to 'Excluir', high_school_path(@high_school), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Tem certeza?' }, class: "btn btn-danger" %>
+
+
 <%= link_to 'Voltar', high_schools_path %>

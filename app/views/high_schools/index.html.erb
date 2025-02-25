@@ -9,7 +9,8 @@
       <th>Ações</th>
     </tr>
   </thead>
-  <tbody>
+
+<tbody>
     <% @high_schools.each do |high_school| %>
       <tr>
         <td><%= high_school.stage %></td>
@@ -26,6 +27,5 @@
 </table>
 
 <%= link_to 'Novo Registro', new_high_school_path %>
-
 
 
