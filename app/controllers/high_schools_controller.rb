@@ -2,9 +2,25 @@ class HighSchoolsController < ApplicationController
 	before_action :set_high_school, only: [:show, :edit, :update, :destroy]
 
   def index
-   @high_schools = HighSchool.order(Arel.sql("CAST(stage AS INTEGER) ASC, CASE period WHEN 'Parcial' THEN 1 WHEN 'Global' THEN 2 END"))
-  end
+  @high_schools = HighSchool.order(Arel.sql("
+    CAST(stage AS INTEGER) ASC,
+    CASE period WHEN 'Parcial' THEN 1 WHEN 'Global' THEN 2 END,
+    date ASC
+  "))
 
+  @high_schools_grouped = @high_schools.group_by(&:stage).map do |stage, high_schools|
+    {
+      stage: stage,
+      periods: high_schools.group_by(&:period).map do |period, high_schools_period|
+        {
+          period: period,
+          count: high_schools_period.count,
+          high_schools: high_schools_period
+        }
+      end
+    }
+  end
+end
   def show; end
 
   def new
@@ -46,6 +62,8 @@ class HighSchoolsController < ApplicationController
     redirect_to high_schools_path, alert: 'Error deleting high school record.'
   end
 end
+
+
 
 
   private

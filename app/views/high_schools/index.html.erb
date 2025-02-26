@@ -1,31 +1,32 @@
-<h1>Cronograma 2025<br>Ensino Médio</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Etapa</th>
-      <th>Período</th>
-      <th>Data</th>
-      <th>Disciplina</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
 
-<tbody>
-    <% @high_schools.each do |high_school| %>
+<%= link_to 'Novo Registro', new_high_school_path %>
+<table class="table table-bordered">
+  <tbody>
+    <% @high_schools_grouped.each do |stage| %>
       <tr>
-        <td><%= high_school.stage %></td>
-        <td><%= high_school.period %></td>
-        <td><%= high_school.date %></td>
-        <td><%= high_school.subjects.map(&:subject_name).join(", ") %></td>
-        <td>
-          <%= link_to 'Editar', edit_high_school_path(high_school) %>
-          <%= link_to 'Excluir', high_school_path(high_school), method: :delete %>
-        </td>
+        <td colspan="5" style="text-align: center;"><strong><%= stage[:stage] %>ª Etapa</strong></td>
       </tr>
+      <tr>
+        <th>Período</th>
+        <th>Data</th>
+        <th>Disciplinas</th>
+        <th>Ações</th>
+      </tr>
+      <% stage[:periods].each do |period| %>
+        <% period[:high_schools].each do |high_school| %>
+          <tr>
+            <% if period[:high_schools].index(high_school) == 0 %>
+              <td rowspan="<%= period[:count] %>"><%= period[:period] %></td>
+            <% end %>
+            <td><%= high_school.date %></td>
+            <td><%= high_school.subjects.map(&:subject_name).join(", ") %></td>
+            <td>
+              <%= link_to 'Editar', edit_high_school_path(high_school), class: "btn btn-warning btn-sm" %>
+              <%= link_to 'Excluir', high_school_path(high_school), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Novo Registro', new_high_school_path %>
-
-
