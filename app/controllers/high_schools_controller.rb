@@ -2,7 +2,7 @@ class HighSchoolsController < ApplicationController
 	before_action :set_high_school, only: [:show, :edit, :update, :destroy]
 
   def index
-    @high_schools = HighSchool.all
+   @high_schools = HighSchool.order(Arel.sql("CAST(stage AS INTEGER) ASC, CASE period WHEN 'Parcial' THEN 1 WHEN 'Global' THEN 2 END"))
   end
 
   def show; end
