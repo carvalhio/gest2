@@ -1,6 +1,8 @@
 class HighSchoolsController < ApplicationController
 	before_action :set_high_school, only: [:show, :edit, :update, :destroy]
-
+  def format_date(date)
+  date.strftime("%d de %B")
+end
   def index
   @high_schools = HighSchool.order(Arel.sql("
     CAST(stage AS INTEGER) ASC,

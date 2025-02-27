@@ -4,9 +4,9 @@
   <tbody>
     <% @high_schools_grouped.each do |stage| %>
       <tr>
-        <td colspan="5" style="text-align: center;"><strong><%= stage[:stage] %>ª Etapa</strong></td>
+        <td class="table-primary" colspan="5" style="text-align: center;"><strong><%= stage[:stage] %>ª Etapa</strong></td>
       </tr>
-      <tr>
+      <tr class="table-secondary">
         <th>Período</th>
         <th>Data</th>
         <th>Disciplinas</th>
@@ -18,7 +18,8 @@
             <% if period[:high_schools].index(high_school) == 0 %>
               <td rowspan="<%= period[:count] %>"><%= period[:period] %></td>
             <% end %>
-            <td><%= high_school.date %></td>
+          <td><%= format_date(high_school.date) %></td>
+
             <td><%= high_school.subjects.map(&:subject_name).join(", ") %></td>
             <td>
               <%= link_to 'Editar', edit_high_school_path(high_school), class: "btn btn-warning btn-sm" %>
