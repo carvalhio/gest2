@@ -1,0 +1,36 @@
+.high-schools-table {
+  border-collapse: collapse;
+}
+
+.high-schools-table th, .high-schools-table td {
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: right;
+  width: 100px; /* ajuste o valor de acordo com a sua necessidade */
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.high-schools-table th {
+  background-color: #f0f0f0;
+}
+
+.high-schools-table th, .high-schools-table td {
+ 
+}
+.coluna-1 {
+  width: 50px;
+}
+
+.coluna-2 {
+  width: 100px;
+}
+
+.coluna-3 {
+  width: 150px;
+}

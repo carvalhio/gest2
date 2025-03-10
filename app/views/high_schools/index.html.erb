@@ -1,6 +1,6 @@
 
 <%= link_to 'Novo Registro', new_high_school_path %>
-<table class="table table-bordered">
+<table class="table table-bordered high-schools-table" style="margin: 0 auto;">
   <tbody>
     <% @high_schools_grouped.each do |stage| %>
       <tr>
@@ -9,21 +9,21 @@
       <tr class="table-secondary">
         <th>Período</th>
         <th>Data</th>
-        <th>Disciplinas</th>
-        <th>Ações</th>
+        <th class="coluna-1">Disciplinas</th>
+       <!-- <th>Ações</th> -->
       </tr>
       <% stage[:periods].each do |period| %>
         <% period[:high_schools].each do |high_school| %>
-          <tr>
+          <tr class="coluna-2">
             <% if period[:high_schools].index(high_school) == 0 %>
-              <td rowspan="<%= period[:count] %>"><%= period[:period] %></td>
+              <td rowspan="<%= period[:count] %>"  class="table-light">  <%= period[:period] %> </td>
             <% end %>
           <td><%= format_date(high_school.date) %></td>
 
-            <td><%= high_school.subjects.map(&:subject_name).join(", ") %></td>
-            <td>
-              <%= link_to 'Editar', edit_high_school_path(high_school), class: "btn btn-warning btn-sm" %>
-              <%= link_to 'Excluir', high_school_path(high_school), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+            <td class="coluna-3"><%= high_school.subjects.map(&:subject_name).join(", ") %></td>
+           <!-- <td>
+              <%= link_to 'Editar', edit_high_school_path(high_school), class: "link-opacity-50" %>
+              <%= link_to 'Excluir', high_school_path(high_school), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %> -->
             </td>
           </tr>
         <% end %>
