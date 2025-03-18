@@ -63,10 +63,6 @@ def update
     end
   end
 end
-
-
-
-
   
 
   # DELETE /school_classes/1 or /school_classes/1.json
@@ -91,9 +87,6 @@ end
     end
 
 end
-
-
-
 
 
 private
