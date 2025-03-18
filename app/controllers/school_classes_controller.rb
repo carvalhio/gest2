@@ -50,35 +50,24 @@ class SchoolClassesController < ApplicationController
   end
 
   # PATCH/PUT /school_classes/1 or /school_classes/1.json
-  def update
-    respond_to do |format|
-      if @school_class.update(school_class_params)
-        format.html { redirect_to @school_class, notice: "Turma atualizada!." }
-        format.json { render :show, status: :ok, location: @school_class }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @school_class.errors, status: :unprocessable_entity }
-      end
-    end
-    @teacher = Teacher.find(params[:id])
-    if @teacher.update(teacher_params)
-      redirect_to @teacher, notice: 'Professor atualizado com sucesso.'
+def update
+  @school_class = SchoolClass.find(params[:id]) # Ensure we find the correct class
+
+  respond_to do |format|
+    if @school_class.update(school_class_params)
+      format.html { redirect_to school_classes_path, notice: "Turma atualizada!." } # Redirect to index instead of show
+      format.json { render :show, status: :ok, location: @school_class }
     else
-      render :edit
+      format.html { render :edit, status: :unprocessable_entity }
+      format.json { render json: @school_class.errors, status: :unprocessable_entity }
     end
   end
+end
 
-  #inciio_correcao
 
-  def update
-    @teacher = Teacher.find(params[:id])
-    if @teacher.update(teacher_params)
-      redirect_to @teacher, notice: 'Professor atualizado com sucesso.'
-    else
-      render :edit
-    end
-  end
-  #fim_correcao
+
+
+  
 
   # DELETE /school_classes/1 or /school_classes/1.json
   def destroy
