@@ -18,25 +18,34 @@
         <li class="nav-item">
            <%= link_to "Turmas", school_classes_path, class:"nav-link" %>
         </li>
-        
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="testesDropdown" data-bs-toggle="dropdown" aria-expanded="false">Cronograma</a>
+          <a class="nav-link dropdown-toggle" href="#" id="testesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+             Cronograma
+          </a>
           <ul class="dropdown-menu" aria-labelledby="testesDropdown">
-            <li><a class="dropdown-item" href="#">Ensino Infantil</a></li>
-            <li><%= link_to "Anos Iniciais", anos_iniciais_schedules_path, class:"dropdown-item" %> </li>
-            <li><%= link_to "E.F. Anos Finais", schedules_path, class:"dropdown-item" %></li>
-            <li><%= link_to "Ensino Médio", high_schools_path, class:"dropdown-item" %></li>
+            <li><a class="dropdown-item" href="#">• Ensino Infantil</a></li>
+            <li><%= link_to "• Anos Iniciais".html_safe, anos_iniciais_schedules_path, class:"dropdown-item" %></li>
+            <li><%= link_to "• E.F. Anos Finais".html_safe, schedules_path, class:"dropdown-item" %></li>
+            <li><%= link_to "• Ensino Médio".html_safe, high_schools_path, class:"dropdown-item" %></li>
+            <li><%= link_to "• Pré-Universitário".html_safe, high_schools_path, class:"dropdown-item" %></li>
           </ul>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="testesDropdown" data-bs-toggle="dropdown" aria-expanded="false">Manual</a>
-          <ul class="dropdown-menu" aria-labelledby="testesDropdown">
-            <li><a class="dropdown-item" href="#">Ensino Infantil reste</a></li>
-            <li><a class="dropdown-item" href="#">E.F. Anos Iniciais</a></li>
-            <li><%= link_to "E.F. Anos Finais", schedules_path, class:"dropdown-item" %></li>
-            <li><a class="dropdown-item" href="#">Ensino Médio</a></li>
-          </ul>
+  <a class="nav-link dropdown-toggle" href="#" id="testesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+     Manual
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="testesDropdown">
+    <li><a class="dropdown-item" href="#">• Ensino Infantil</a></li>
+    <li><%= link_to "• Anos Iniciais".html_safe, anos_iniciais_schedules_path, class:"dropdown-item" %></li>
+    <li><%= link_to "• E.F. Anos Finais".html_safe, schedules_path, class:"dropdown-item" %></li>
+    <li><%= link_to "• Ensino Médio".html_safe, high_schools_path, class:"dropdown-item" %></li>
+    <li><%= link_to "• Pré-Universitário".html_safe, high_schools_path, class:"dropdown-item" %></li>
+  </ul>
+</li>
+
+        <li class="nav-item">
+           <%= link_to "Loja", school_classes_path, class:"nav-link" %>
         </li>
       
       </ul>

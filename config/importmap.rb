@@ -9,3 +9,4 @@ pin "@rails/ujs", to: "@rails--ujs.js" # @7.1.3
 
 pin "select2" # @4.1.0
 pin "jquery" # @3.7.1
+pin "@fortawesome/fontawesome-free", to: "@fortawesome--fontawesome-free.js" # @6.7.2
