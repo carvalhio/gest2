@@ -15,7 +15,10 @@
 
 <div class="mb-3">
     <%= form.label :subject_ids, "Comp. Curricular", class: "form-label" %>
-    <%= form.select :subject_ids, Subject.all.pluck(:subject_name, :id), {}, { multiple: true, class: "form-control select2-multiple" } %>
+    <%= form.select :subject_ids, Subject.all.pluck(:subject_name, :id), 
+      { include_hidden: false }, 
+      { multiple: true, class: "form-control select2-multiple", name: "high_school[subject_ids][]" } %>
+
   </div>
 <script>
 $(document).ready(function() {
