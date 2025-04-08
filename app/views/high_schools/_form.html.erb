@@ -1,35 +1,42 @@
-<%= form_for(@high_school) do |form| %>
-  <div class="mb-3">
-    <%= form.label :stage, "Etapa", class: "form-label" %>
-    <%= form.select :stage, HighSchool::STAGES, { prompt: "Selecione a Etapa" }, class: "form-select" %>
+<div class="d-flex justify-content-center">
+  <div class="card p-4" style="width: 100%; max-width: 600px;">
+    <%= form_for(@high_school) do |form| %>
+
+      <div class="mb-3 row">
+        <div class="col-auto">
+          <%= form.label :stage, "Etapa", class: "form-label" %>
+          <%= form.select :stage, HighSchool::STAGES, { prompt: "Etapa" }, class: "form-select form-select-sm", style: "width: 80px;" %>
+        </div>
+
+        <div class="col-auto">
+          <%= form.label :period, "Período", class: "form-label" %>
+          <%= form.select :period, HighSchool::PERIODS, { prompt: "Período" }, class: "form-select form-select-sm", style: "width: 140px;" %>
+        </div>
+
+        <div class="col-auto">
+          <%= form.label :date, "Data", class: "form-label" %>
+          <%= form.date_field :date, class: "form-control form-control-sm" %>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :subject_ids, "Componente Curricular", class: "form-label" %>
+        <%= form.select :subject_ids, Subject.all.pluck(:subject_name, :id),
+          { include_hidden: false },
+          { multiple: true, class: "form-control select2-multiple", name: "high_school[subject_ids][]" } %>
+      </div>
+
+      <%= form.submit "Salvar", class: "btn btn-primary w-100" %>
+    <% end %>
   </div>
+</div>
 
-  <div class="mb-3">
-    <%= form.label :period, "Período", class: "form-label" %>
-    <%= form.select :period, HighSchool::PERIODS, { prompt: "Selecione o Período" }, class: "form-select" %>
-  </div>
-
-  <%= form.label :date %>
-  <%= form.date_field :date %>
-
-
-<div class="mb-3">
-    <%= form.label :subject_ids, "Comp. Curricular", class: "form-label" %>
-    <%= form.select :subject_ids, Subject.all.pluck(:subject_name, :id), 
-      { include_hidden: false }, 
-      { multiple: true, class: "form-control select2-multiple", name: "high_school[subject_ids][]" } %>
-
-  </div>
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
     $('.select2-multiple').select2({
-        placeholder: "Selecione as Comp. Curriculares",
-        allowClear: true
+      placeholder: "Selecione os Componentes Curriculares",
+      width: '100%',
+      allowClear: true
     });
-});
+  });
 </script>
-
-  <%= form.submit %>
-<% end %>
-
-
