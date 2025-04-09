@@ -1,9 +1,7 @@
-
-
 <%= form_with(model: teacher, class: "needs-validation", local: true) do |form| %>
   <% if teacher.errors.any? %>
     <div class="alert alert-danger">
-      <h4><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h4>
+      <h4><%= pluralize(teacher.errors.count, "erro") %> impediram o salvamento:</h4>
       <ul>
         <% teacher.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -27,15 +25,25 @@
     <%= form.text_field :phone, class: "form-control form-control-sm" %>
   </div>
 
+  <div class="mb-3 col-md-6">
+    <%= form.label :subject_ids, "Componentes Curriculares", class: "form-label" %>
+    <%= form.select :subject_ids, Subject.all.pluck(:subject_name, :id), 
+      { include_hidden: false }, 
+      { multiple: true, class: "form-control select2-multiple", name: "teacher[subject_ids][]" } %>
+  </div>
 
-<%= form.label :subjects %>
-  <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :subject_name %>
-
-
-  <div class="d-flex justify-content-end">
+  <div>
     <%= form.submit "Salvar", class: "btn btn-primary btn-sm" %>
   </div>
 <% end %>
 
-
-
+<!-- Select2 Init -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $('.select2-multiple').select2({
+      placeholder: "Selecione as disciplinas",
+      allowClear: true,
+      width: '100%'
+    });
+  });
+</script>
