@@ -1,29 +1,35 @@
+<%= link_to "Editar registros", "#", id: "toggle-actions", class: "btn btn-outline-secondary btn-sm mb-3" %>
+<%= link_to 'Novo Registro', new_high_school_path, class: "btn btn-primary btn-sm mb-3 ms-2" %>
 
-<%= link_to 'Novo Registro', new_high_school_path %>
 <table class="table table-bordered high-schools-table" style="margin: 0 auto;">
+  <thead>
+    <tr class="table-secondary">
+      <th>Período</th>
+      <th>Data</th>
+      <th class="coluna-1">Disciplinas</th>
+      <th class="actions-column" style="display: none;">Ações</th>
+    </tr>
+  </thead>
   <tbody>
     <% @high_schools_grouped.each do |stage| %>
       <tr>
-        <td class="table-primary" colspan="5" style="text-align: center;"><strong><%= stage[:stage] %>ª Etapa</strong></td>
-      </tr>
-      <tr class="table-secondary">
-        <th>Período</th>
-        <th>Data</th>
-        <th class="coluna-1">Disciplinas</th>
-       <!-- <th>Ações</th> -->
+        <td class="table-primary" colspan="4" style="text-align: center;">
+          <strong><%= stage[:stage] %>ª Etapa</strong>
+        </td>
       </tr>
       <% stage[:periods].each do |period| %>
         <% period[:high_schools].each do |high_school| %>
           <tr class="coluna-2">
             <% if period[:high_schools].index(high_school) == 0 %>
-              <td rowspan="<%= period[:count] %>"  class="table-light">  <%= period[:period] %> </td>
+              <td rowspan="<%= period[:count] %>" class="table-light">
+                <%= period[:period] %>
+              </td>
             <% end %>
-          <td><%= format_date(high_school.date) %></td>
-
+            <td><%= format_date(high_school.date) %></td>
             <td class="coluna-3"><%= high_school.subjects.map(&:subject_name).join(", ") %></td>
-           <!-- <td>
-              <%= link_to 'Editar', edit_high_school_path(high_school), class: "link-opacity-50" %>
-              <%= link_to 'Excluir', high_school_path(high_school), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %> -->
+            <td class="actions-column" style="display: none;">
+              <%= link_to 'Editar', edit_high_school_path(high_school), class: "btn btn-sm btn-outline-primary me-1" %>
+              <%= link_to 'Excluir', high_school_path(high_school), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-sm btn-outline-danger" %>
             </td>
           </tr>
         <% end %>
@@ -31,3 +37,19 @@
     <% end %>
   </tbody>
 </table>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById("toggle-actions");
+    const actionColumns = document.querySelectorAll(".actions-column");
+
+    toggleBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      actionColumns.forEach(col => {
+        col.style.display = (col.style.display === "none" || col.style.display === "") ? "table-cell" : "none";
+      });
+
+      toggleBtn.innerText = (toggleBtn.innerText === "Editar registros") ? "Ocultar ações" : "Editar registros";
+    });
+  });
+</script>
