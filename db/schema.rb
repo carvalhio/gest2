@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_24_185935) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_22_191545) do
   create_table "high_school_subjects", force: :cascade do |t|
     t.integer "high_school_id", null: false
     t.integer "subject_id", null: false
@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_24_185935) do
     t.string "shift"
     t.integer "qty_adaptado"
     t.integer "adpt"
+    t.integer "adpt_level1"
+    t.integer "adpt_level2"
     t.index ["grade", "identifier"], name: "index_school_classes_on_grade_and_identifier", unique: true
   end
 

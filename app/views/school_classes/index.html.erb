@@ -1,55 +1,60 @@
 <p style="color: green"><%= notice %></p>
 
 <div>
-	<% content_for :title, "Turmas" %>
-	<%= link_to "Nova turma", new_school_class_path, class: "btn btn-info btn-sm mb-2" %>
-	
-	<div class="mb-1 col-md-1">
-		<%= form_with url: school_classes_path, method: :get, local: true, id: "shift-filter-form" do %>
-		<%= select_tag :shift, options_for_select(SchoolClass::SHIFTS, params[:shift]),
-			include_blank: "Todos",class: "form-select",onchange: "this.form.submit();" %>
-		<% end %>
-	</div>
+  <% content_for :title, "Turmas" %>
+  <%= link_to "Nova turma", new_school_class_path, class: "btn btn-info btn-sm mb-2" %>
+  
+  <div class="mb-1 col-md-1">
+    <%= form_with url: school_classes_path, method: :get, local: true, id: "shift-filter-form" do %>
+      <%= select_tag :shift, options_for_select(SchoolClass::SHIFTS, params[:shift]),
+        include_blank: "Todos", class: "form-select", onchange: "this.form.submit();" %>
+    <% end %>
+  </div>
 </div>
 
 <table class="tiny-table table-sm table-bordered table-hover">
-<thead class="table-light">
-<tr>
-<th scope="col" class="text-center grade-column">Ano/Série</th>
-<th scope="col" class="text-center shift-column">Turno</th>
-<th scope="col" class="text-center quantity-column">Quantidade</th>
-<th scope="col" class="text-center adpt-column">Qtd. Adaptados</th>
-<th scope="col" class="text-center level-column">Nível</th>
-<th scope="col" class="text-center actions-column">Ações</th>
-</tr>
-</thead>
-<tbody>
+  <thead class="table-light">
+    <tr>
+      <th scope="col" class="text-center grade-column">Ano/Série</th>
+      <th scope="col" class="text-center shift-column">Turno</th>
+      <th scope="col" class="text-center quantity-column">Quantidade</th>
+      <th scope="col" class="text-center adpt-column">Qtd. Adaptados</th>
+      <th scope="col" class="text-center">Qtd. Adpt. Nível 1</th>
+      <th scope="col" class="text-center">Qtd. Adpt. Nível 2</th>
+      <th scope="col" class="text-center level-column">Nível</th>
+      <th scope="col" class="text-center actions-column">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @school_classes.each do |school_class| %>
+      <tr>
+        <td class="text-center grade-column"><%= "#{school_class.grade} #{school_class.identifier}" %></td>
+        <td class="text-center shift-column"><%= school_class.shift %></td>
+        <td class="text-center quantity-column"><%= school_class.quantity %></td>
+        <td class="text-center"><%= school_class.adpt %></td>
+        <td class="text-center"><%= school_class.adpt_level1 %></td>
+        <td class="text-center"><%= school_class.adpt_level2 %></td>
+        <td class="text-center level-column"><%= school_class.level %></td>
+        <td class="text-center actions-column">
+          <%= link_to 'Detalhes', school_class, class: "text-info text-decoration-none" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 
-<% @school_classes.each do |school_class| %>
-<tr>
-<td class="text-center grade-column"><%= "#{school_class.grade} #{school_class.identifier}" %></td>
-<td class="text-center shift-column"><%= school_class.shift %></td>
-<td class="text-center quantity-column"><%= school_class.quantity %></td>
-<td class="text-center"><%= school_class.adpt %></td>
-<td class="text-center level-column"><%= school_class.level %></td>
-<td class="text-center actions-column">
-
-<%= link_to 'Detalhes', school_class, class: "text-info text-decoration-none" %>
-</td>
-</tr>
-<% end %>
-
-</tbody>
-<tfoot>
-	<tr>
-		<td colspan="2"></td>
-		<td class="text-center">Total: <%= @school_classes.sum(:quantity) %></td>
-		<td class="text-center">Total: <%= @school_classes.sum(:adpt) %></td>
-		<td></td>
-	</tr>
-</tfoot>
+  <tfoot>
+    <tr>
+      <td colspan="2"></td>
+      <td class="text-center">Total: <%= @school_classes.sum(:quantity) %></td>
+      <td class="text-center">Total: <%= @school_classes.sum(:adpt) %></td>
+      <td class="text-center">Total: <%= @school_classes.sum(:adpt_level1) %></td>
+      <td class="text-center">Total: <%= @school_classes.sum(:adpt_level2) %></td>
+      <td colspan="2"></td>
+    </tr>
+  </tfoot>
 </table>
-</br>
+
+<br>
+
 <%= stylesheet_link_tag 'print', media: 'print' %>
 <%= link_to "Imprimir", "#", class: "btn btn-secondary btn-sm mb-2", onclick: "window.print();" %>
-

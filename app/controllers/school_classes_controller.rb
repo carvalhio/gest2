@@ -83,8 +83,9 @@ end
 
     # Only allow a list of trusted parameters through.
     def school_class_params
-      params.require(:school_class).permit(:grade, :level, :quantity, :identifier, :shift, :adpt)
+      params.require(:school_class).permit(:grade, :identifier, :shift, :quantity, :adpt, :adpt_level1, :adpt_level2, :level)
     end
+
 
 end
 
@@ -94,3 +95,5 @@ private
 def teacher_params
   params.require(:teacher).permit(:name, :email, :teacher_id, subject_ids: [])
 end
+
+

@@ -1,18 +1,17 @@
-<div class="container d-flex justify-content-center">
-  <div class="col-md-8">
-    <%= form_with(model: school_class, local: true) do |form| %>
-      <% if school_class.errors.any? %>
-        <div class="alert alert-danger">
-          <h4><%= pluralize(school_class.errors.count, "erro") %> impediram o salvamento:</h4>
-          <ul>
-            <% school_class.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+<%= form_with(model: school_class, local: true) do |form| %>
+  <% if school_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(school_class.errors.count, "erro") %> proibiu este registro de ser salvo:</h2>
 
-      <div class="row">
+      <ul>
+        <% school_class.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="row">
         <div class="mb-3 col-md-6">
           <%= form.label :grade, "Ano/Série", class: "form-label" %>
           <%= form.select :grade, options_for_select([
@@ -23,38 +22,47 @@
           ], selected: school_class.grade), { include_blank: "Selecione um ano/série" }, class: "form-select form-select-sm" %>
         </div>
 
-        <div class="mb-3 col-md-3">
-          <%= form.label :identifier, "Turma", class: "form-label" %>
-          <%= form.select :identifier, options_for_select(SchoolClass::IDENTIFIERS, selected: school_class.identifier), { include_blank: "Turma" }, class: "form-select form-select-sm" %>
-        </div>
+    <div class="col">
+      <%= form.label :identifier, "Turma (ex: A, B...)" %>
+      <%= form.text_field :identifier, class: "form-control" %>
+    </div>
 
-        <div class="mb-3 col-md-3">
-          <%= form.label :shift, "Turno", class: "form-label" %>
-          <%= form.select :shift, options_for_select(SchoolClass::SHIFTS, selected: school_class.shift), { include_blank: "Turno" }, class: "form-select form-select-sm" %>
-        </div>
-      </div>
+    <div class="col">
+      <%= form.label :shift, "Turno" %>
+      <%= form.select :shift, SchoolClass::SHIFTS, {}, class: "form-select" %>
+    </div>
+  </div>
 
-      <div class="row">
+  <div class="row mb-2">
+    <div class="col">
+      <%= form.label :quantity, "Quantidade de Alunos" %>
+      <%= form.number_field :quantity, class: "form-control" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :adpt, "Qtd. Adaptados (Total)" %>
+      <%= form.number_field :adpt, class: "form-control" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :adpt_level1, "Qtd. Nível 1" %>
+      <%= form.number_field :adpt_level1, class: "form-control" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :adpt_level2, "Qtd. Nível 2" %>
+      <%= form.number_field :adpt_level2, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
         <div class="mb-3 col-md-6">
           <%= form.label :level, "Nível", class: "form-label" %>
           <%= form.collection_select :level, Level.all, :name, :name, { prompt: "Selecione o nível" }, class: "form-select form-select-sm" %>
         </div>
 
-        <div class="mb-3 col-md-3">
-          <%= form.label :quantity, "Total de Alunos", class: "form-label" %>
-          <%= form.number_field :quantity, class: "form-control form-control-sm" %>
-        </div>
-
-        <div class="mb-3 col-md-3">
-          <%= form.label :adpt, "Testes Adaptados", class: "form-label" %>
-          <%= form.number_field :adpt, class: "form-control form-control-sm" %>
-        </div>
-      </div>
-
-      <div class="mt-3">
-        <%= form.submit "Salvar", class: "btn btn-primary w-100" %>
-      </div>
-
-    <% end %>
+  <div class="mt-3">
+    <%= form.submit "Salvar", class: "btn btn-success" %>
+    <%= link_to "Cancelar", school_classes_path, class: "btn btn-secondary" %>
   </div>
-</div>
+<% end %>
