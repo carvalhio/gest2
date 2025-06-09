@@ -1,0 +1,40 @@
+<!-- app/views/store/index.html.erb -->
+
+<div class="store-container">
+  <!-- Cabeçalho -->
+  <header class="store-header text-center py-3">
+    <h1>Loja Virtual Carvalho</h1>
+    <p>Bem-vindo à nossa loja! Confira nossos produtos.</p>
+  </header>
+
+  <!-- Menu de Categorias -->
+  <nav class="store-categories my-3 text-center">
+    <ul class="nav justify-content-center">
+      <li class="nav-item"><a class="nav-link" href="#">Todos</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Material Escolar</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Uniformes</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Livros</a></li>
+    </ul>
+  </nav>
+
+  <!-- Lista de Produtos -->
+  <div class="row justify-content-center">
+    <% 6.times do %> <!-- Isso é apenas um layout exemplo. -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://via.placeholder.com/200x200" class="card-img-top" alt="Produto">
+          <div class="card-body">
+            <h5 class="card-title">Nome do Produto</h5>
+            <p class="card-text">R$ 99,90</p>
+            <a href="#" class="btn btn-primary btn-sm">Comprar</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="text-center py-4 mt-5 bg-light border-top">
+    <p>&copy; <%= Time.now.year %> Loja Virtual Carvalho. Todos os direitos reservados.</p>
+  </footer>
+</div>
