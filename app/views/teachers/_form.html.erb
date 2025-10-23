@@ -12,17 +12,18 @@
 
   <div class="mb-3 col-md-5">
     <%= form.label :name, "Nome", class: "form-label" %>
-    <%= form.text_field :name, class: "form-control form-control-sm" %>
+    <%= form.text_field :name, class: "form-control form-control-sm", required: true %>
   </div>
   
   <div class="mb-3 col-md-5">
     <%= form.label :email, "E-mail", class: "form-label" %>
-    <%= form.text_field :email, class: "form-control form-control-sm" %>
+    <%= form.text_field :email, class: "form-control form-control-sm", required: true %>
   </div>
 
   <div class="mb-3 col-md-5">
     <%= form.label :phone, "Telefone", class: "form-label" %>
-    <%= form.text_field :phone, class: "form-control form-control-sm" %>
+    <%= form.text_field :phone, class: "form-control form-control-sm", required: true %>
+
   </div>
 
   <div class="mb-3 col-md-6">
@@ -31,14 +32,8 @@
       { include_hidden: false }, 
       { multiple: true, class: "form-control select2-multiple", name: "teacher[subject_ids][]" } %>
   </div>
-
-  <div>
-    <%= form.submit "Salvar", class: "btn btn-primary btn-sm" %>
-  </div>
-<% end %>
-
-<!-- Select2 Init -->
-<script>
+  
+  <script>
   document.addEventListener("DOMContentLoaded", function() {
     $('.select2-multiple').select2({
       placeholder: "Selecione as disciplinas",
@@ -47,3 +42,11 @@
     });
   });
 </script>
+
+  <div>
+    <%= form.submit "Salvar", class: "btn btn-primary btn-sm" %>
+  </div>
+<% end %>
+
+<!-- Select2 Init -->
+

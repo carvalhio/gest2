@@ -1,14 +1,13 @@
 class TeachersController < ApplicationController
-	before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
   def index
     @teachers = Teacher.all
   end
 
   def show
-    @teacher = Teacher.find(params[:id])
     @subjects = @teacher.subjects
-   end
+  end
 
   def new
     @teacher = Teacher.new
@@ -22,32 +21,32 @@ class TeachersController < ApplicationController
     if @teacher.save
       redirect_to @teacher, notice: 'Professor criado com sucesso!'
     else
-       render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
+   def update
+    # Remove IDs vazios do form
+    subject_ids = params[:teacher][:subject_ids]&.reject(&:blank?) || []
 
-def update
-  @teacher = Teacher.find(params[:id])
-
-  # Remove IDs vazios para evitar erro no banco
-  params[:teacher][:subject_ids]&.reject!(&:blank?)
-
-  if @teacher.update(teacher_params)
-    @teacher.subject_ids = params[:teacher][:subject_ids]
-    @teacher.save
-    #redirect_to teachers_path, notice: 'Professor atualizado com sucesso!'
-    redirect_to @teacher, notice: 'Professor atualizado com sucesso!'
-  else
-    render :edit, status: :unprocessable_entity
+    if @teacher.update(teacher_params)
+      @teacher.subject_ids = subject_ids
+      redirect_to @teacher, notice: 'Professor atualizado com sucesso!'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
+
+  def destroy
+  # Limpa todas as associações do professor na tabela de junção
+  @teacher.subjects.delete_all
+
+  # Agora podemos deletar o professor
+  @teacher.destroy
+  redirect_to teachers_path, notice: 'Professor excluído com sucesso.'
 end
 
 
-  def destroy
-    @teacher.destroy
-    redirect_to teachers_url, notice: 'Professor excluído com sucesso!'
-  end
 
   private
 
@@ -57,19 +56,6 @@ end
 
   def teacher_params
     params.require(:teacher).permit(:name, :email, :phone, subject_ids: [])
-  end
-end
-
-
-
-
-
-def create
-  @teacher = Teacher.new(teacher_params)
-  if @teacher.save
-    redirect_to teachers_path, notice: "Professor cadastrado com sucesso!"
-  else
-    render :new, status: :unprocessable_entity
   end
 end
 

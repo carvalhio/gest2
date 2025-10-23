@@ -1,18 +1,48 @@
-
-
 <h1>Editar Professor</h1>
 
 <%= form_for(@teacher) do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+  <% if @teacher.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@teacher.errors.count, "erro") %> impediram o salvamento:</h4>
+      <ul>
+        <% @teacher.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <%= form.label :email %>
-  <%= form.text_field :email %>
+  <div class="mb-3 col-md-5">
+    <%= form.label :name, "Nome", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control form-control-sm", required: true %>
+  </div>
 
+  <div class="mb-3 col-md-5">
+    <%= form.label :email, "E-mail", class: "form-label" %>
+    <%= form.text_field :email, class: "form-control form-control-sm", required: true %>
+  </div>
 
-  <%= form.label :subjects %>
-  <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :subject_name %>
+  <div class="mb-3 col-md-5">
+    <%= form.label :phone, "Telefone", class: "form-label" %>
+    <%= form.text_field :phone, class: "form-control form-control-sm", required: true %>
+  </div>
 
-  <%= form.submit 'Atualizar Professor' %>
+  <div class="mb-3 col-md-6">
+    <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :subject_name, include_hidden: false do |b| %>
+      <div class="form-check">
+        <%= b.check_box(class: "form-check-input") %>
+        <%= b.label(class: "form-check-label") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex gap-2">
+    <%= button_to "Excluir Professor", teacher_path(@teacher),
+      method: :delete,
+      data: { confirm: "Tem certeza que deseja excluir este professor?" },
+      class: "btn btn-danger btn-sm" %>
+
+  </div>
+
+  
 <% end %>
-
