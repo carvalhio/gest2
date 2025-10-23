@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_22_191545) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_23_193128) do
   create_table "high_school_subjects", force: :cascade do |t|
     t.integer "high_school_id", null: false
     t.integer "subject_id", null: false
@@ -51,9 +51,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_22_191545) do
     t.index ["grade", "identifier"], name: "index_school_classes_on_grade_and_identifier", unique: true
   end
 
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.integer "school_class_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_class_id"], name: "index_students_on_school_class_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "subject_name"
-    t.integer "teacher_id", null: false
+    t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["teacher_id"], name: "index_subjects_on_teacher_id"
@@ -78,6 +86,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_22_191545) do
 
   add_foreign_key "high_school_subjects", "high_schools"
   add_foreign_key "high_school_subjects", "subjects"
+  add_foreign_key "students", "school_classes"
   add_foreign_key "subjects", "teachers"
   add_foreign_key "subjects_teachers", "subjects"
   add_foreign_key "subjects_teachers", "teachers"
