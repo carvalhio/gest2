@@ -2,9 +2,32 @@
 
 <%= render @school_class %>
 
+<h2>Alunos da turma <%= @school_class.grade %> <%= @school_class.identifier %></h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @school_class.students.order(:name).each_with_index do |student, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= student.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <div>
   <%= link_to "Editar", edit_school_class_path(@school_class) %> |
   <%= link_to "Voltar", school_classes_path %>
 
   <%= button_to "Deletar", @school_class, method: :delete %>
+
+
+
 </div>
